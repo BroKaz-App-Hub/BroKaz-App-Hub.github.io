@@ -17,6 +17,45 @@
     .footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font-size:.86rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:640px){.header{padding-top:16px;padding-bottom:16px}nav{gap:14px;font-size:.82rem}.hero{padding:45px 0 38px}.cards,.info{grid-template-columns:1fr}.section-title{align-items:start;flex-direction:column}.card{min-height:240px}}
     .support-contact{margin:0 0 46px;border:1px solid var(--line);border-radius:18px;padding:28px;background:linear-gradient(115deg,#14364f,#0b2033)}.support-contact h2{margin:0 0 8px;font-size:1.6rem}.support-contact p{color:var(--muted);margin:0 0 14px}.support-contact a{display:inline-block;background:var(--accent);color:#082033;font-weight:750;text-decoration:none;padding:11px 17px;border-radius:11px}.support-contact a:hover{background:#b0f2fd}
+
+    /* My Creative Notes gallery: illustrations only; never include private user data */
+    .app-title-button{appearance:none;border:0;background:none;color:inherit;text-align:left;cursor:pointer;font:inherit;padding:0;width:fit-content;font-size:1.33rem;letter-spacing:-.035em;font-weight:760;margin-bottom:3px}
+    .app-title-button:hover,.app-title-button:focus-visible{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+    .notes-actions{flex-wrap:wrap}
+    .details-open{appearance:none;border:1px solid #527893;border-radius:11px;padding:10px 13px;background:transparent;color:#dbf5ff;font:inherit;font-weight:650;font-size:.86rem;cursor:pointer}
+    .details-open:hover,.details-open:focus-visible{background:#284d68}
+    #notesDetails[hidden]{display:none!important}
+    .details-overlay{position:fixed;inset:0;z-index:1000;background:#04101de0;display:flex;align-items:center;justify-content:center;padding:22px;overflow-y:auto}
+    .details-dialog{position:relative;max-width:1220px;width:100%;max-height:calc(100dvh - 44px);background:#f7fbff;color:#1c3958;box-shadow:0 26px 75px #0009;border:1px solid #b3d0e5;border-radius:22px;padding:30px;overflow:auto}
+    .details-close{position:absolute;right:18px;top:13px;background:transparent;border:0;border-radius:8px;color:#375675;font-size:32px;line-height:1;cursor:pointer;z-index:1;width:42px;height:42px}
+    .details-close:hover,.details-close:focus-visible{background:#e7f1fb}
+    .details-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);gap:28px;padding-top:16px}
+    .details-gallery{min-width:0}
+    .details-main{position:relative;background:#d7e9f7;border:1px solid #bed6e6;border-radius:13px;overflow:hidden;aspect-ratio:1200/755;display:grid;place-items:center}
+    .details-main img{display:block;width:100%;height:100%;object-fit:contain}
+    .details-nav{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #ffffffd1;background:#ffffffea;color:#153b61;width:36px;height:46px;border-radius:10px;cursor:pointer;font-size:27px;box-shadow:0 2px 8px #152c3840}
+    .details-nav:hover,.details-nav:focus-visible{background:#cdeeff}
+    .details-prev{left:9px}.details-next{right:9px}
+    .details-caption{min-height:60px;margin:12px 0 14px}.details-caption strong{display:block;font-size:1.06rem}.details-caption span{display:block;color:#5f7790;font-size:.91rem}
+    .details-thumbnails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .details-thumb{appearance:none;border:2px solid transparent;background:#ecf4fa;border-radius:10px;padding:5px;cursor:pointer;color:#325475;text-align:center;font:inherit;font-size:.76rem;line-height:1.25}
+    .details-thumb img{width:100%;height:auto;aspect-ratio:1200/755;object-fit:cover;border-radius:6px;display:block;margin-bottom:4px}
+    .details-thumb:hover,.details-thumb:focus-visible{background:#ddecf7}
+    .details-thumb[aria-current="true"]{border-color:#127ed5;background:#e6f5ff;color:#0c5794;font-weight:750}
+    .details-about h2{font-size:clamp(1.55rem,3vw,2.1rem);letter-spacing:-.035em;margin:12px 0 12px;color:#142f51}
+    .details-subtitle{color:#44647f;line-height:1.62;font-size:.99rem;margin:0 0 18px}
+    .details-icon{width:60px;height:60px;background:#def3ff;border:1px solid #b7daee;border-radius:16px;display:grid;place-items:center;font-size:30px}
+    .details-features{background:#eaf4fd;border-radius:15px;padding:18px;margin:0 0 20px}
+    .details-features h3{margin:0 0 11px;color:#1b4266;font-size:1.02rem}
+    .details-features ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+    .details-features li{display:flex;gap:10px;align-items:start;font-size:.93rem;color:#335876}
+    .details-features li::before{content:'✓';font-size:1.1rem;color:#1783bd;font-weight:800;line-height:1.3}
+    .details-download{width:100%;justify-content:center;background:#126bc3;color:white;font-size:1.07rem}
+    .details-download:hover{background:#08559d}
+    .details-footnote{font-size:.77rem;color:#607991;text-align:center;margin:8px 0 0}
+    .details-demo-note{color:#617c92;margin:11px 0 0;font-size:.82rem}
+    @media(max-width:810px){.details-layout{grid-template-columns:1fr}.details-dialog{padding:22px}.details-thumbnails{grid-template-columns:repeat(3,minmax(0,1fr))}.details-about h2{margin-top:6px}.details-overlay{padding:10px}.details-dialog{max-height:calc(100dvh - 20px)}}
+    @media(max-width:420px){.details-thumbnails{grid-template-columns:repeat(2,minmax(0,1fr))}.details-dialog{padding:14px}.details-layout{gap:17px}}
   </style>
 </head>
 <body>
@@ -25,7 +64,7 @@
     <main id="top">
       <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, G Chat Cleaner, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
-        <article class="card"><div class="app-symbol" aria-hidden="true">📚</div><div class="app-title">My Creative Notes</div><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><div class="card-footer"><a class="cta" style="font-size:.9rem;padding:10px 15px;margin:0" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a></div></article>
+        <article class="card"><div class="app-symbol" aria-hidden="true">📚</div><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><div class="card-footer notes-actions"><a class="cta" style="font-size:.9rem;padding:10px 15px;margin:0" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a><button type="button" class="details-open" id="notesDetailsOpen" aria-haspopup="dialog" aria-controls="notesDetails">View details &amp; screenshots →</button></div></article>
         <article class="card"><div class="app-symbol" aria-hidden="true">🧹</div><div class="app-title">G Chat Cleaner</div><div class="app-version">v3 · Browser bookmarklet</div><p>A convenient tool for selecting and managing conversations in your ChatGPT sidebar.</p><div class="card-footer"><span class="soon">Downloads coming soon</span></div></article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section>
@@ -34,6 +73,99 @@
     </main>
     <footer class="footer"><span>© <span id="year">2026</span> BroKaz App Hub</span><span>Made for useful, everyday tools</span></footer>
   </div>
+
+  <div id="notesDetails" class="details-overlay" hidden>
+    <section class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="notesDetailsHeading" aria-describedby="notesDetailsDescription">
+      <button type="button" id="notesDetailsClose" class="details-close" aria-label="Close My Creative Notes details">×</button>
+      <div class="details-layout">
+        <div class="details-gallery">
+          <div class="details-main">
+            <img id="notesGalleryImage" src="previews/my-creative-notes/overview.svg" width="1200" height="755" alt="Illustrative My Creative Notes screen showing tabs, sidebar and example notes">
+            <button type="button" class="details-nav details-prev" id="notesPrev" aria-label="Previous screenshot">‹</button>
+            <button type="button" class="details-nav details-next" id="notesNext" aria-label="Next screenshot">›</button>
+          </div>
+          <div id="notesGalleryCaption" class="details-caption" aria-live="polite"><strong>Everything in one place</strong><span>Quickly navigate between tabs, sections and example notes.</span></div>
+          <div id="notesGalleryThumbnails" class="details-thumbnails" role="group" aria-label="My Creative Notes screenshot examples"></div>
+          <p class="details-demo-note">Illustrative previews with fictional example notes; the installed app may look slightly different.</p>
+        </div>
+        <div class="details-about">
+          <div class="details-icon" aria-hidden="true">📚</div>
+          <h2 id="notesDetailsHeading">My Creative Notes</h2>
+          <p id="notesDetailsDescription" class="details-subtitle">Keep notes, lists and everyday information together in one easy place. Organise the different parts of your life with tabs and a customisable sidebar.</p>
+          <div class="details-features">
+            <h3>What you can do</h3>
+            <ul>
+              <li>Organise notes into separate tabs and sections</li>
+              <li>Rearrange sidebar sections with drag-and-drop</li>
+              <li>Search across your saved information</li>
+              <li>Keep everyday lists and reminders together</li>
+              <li>Save notes on your own computer and back them up</li>
+              <li>Check for app updates through BroKaz App Hub</li>
+            </ul>
+          </div>
+          <a class="cta details-download" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a>
+          <p class="details-footnote">Windows desktop app · No example notes are included in the installer</p>
+        </div>
+      </div>
+    </section>
+  </div>
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+
+  <script>
+  (function(){
+    const previews=[
+      {src:'previews/my-creative-notes/overview.svg',name:'Main view',title:'Everything in one place',description:'Access tabs, sections and your notes from one clear screen.',alt:'Illustrated main view with Personal and Work tabs and sample notes'},
+      {src:'previews/my-creative-notes/work.svg',name:'Work tab',title:'Organise work information',description:'Separate weekly plans, meeting notes and ideas into useful sections.',alt:'Illustrated Work tab with fictional weekly priorities'},
+      {src:'previews/my-creative-notes/personal.svg',name:'Personal tab',title:'Keep personal plans together',description:'Save ideas, appointments, recipes and everyday reminders.',alt:'Illustrated Personal tab with fictional weekend plans'},
+      {src:'previews/my-creative-notes/search.svg',name:'Search',title:'Find information quickly',description:'Search for a word or topic to locate matching notes.',alt:'Illustrated search for recipe showing fictional search results'},
+      {src:'previews/my-creative-notes/lists.svg',name:'Lists',title:'Make everyday lists',description:'Use simple lists to track things such as shopping and tasks.',alt:'Illustrated shopping list with generic sample items'},
+      {src:'previews/my-creative-notes/settings.svg',name:'Settings',title:'Settings and updates',description:'Check for updates and manage your note backups.',alt:'Illustrated Settings panel with Check for updates and backup controls'}
+    ];
+    const overlay=document.getElementById('notesDetails');
+    const dialog=overlay.querySelector('[role="dialog"]');
+    const main=document.getElementById('notesGalleryImage');
+    const caption=document.getElementById('notesGalleryCaption');
+    const thumbs=document.getElementById('notesGalleryThumbnails');
+    let current=0,lastFocus=null;
+    function show(i){
+      current=(i+previews.length)%previews.length;
+      const item=previews[current];
+      main.src=item.src;main.alt=item.alt;
+      caption.replaceChildren();
+      const heading=document.createElement('strong');heading.textContent=item.title;
+      const body=document.createElement('span');body.textContent=item.description;
+      caption.append(heading,body);
+      [...thumbs.children].forEach((button,index)=>button.setAttribute('aria-current',String(index===current)));
+    }
+    previews.forEach((item,index)=>{
+      const button=document.createElement('button');button.type='button';button.className='details-thumb';
+      button.setAttribute('aria-label','Show '+item.name+' example');button.setAttribute('aria-current','false');
+      const img=document.createElement('img');img.src=item.src;img.alt='';img.width=190;img.height=120;img.loading='lazy';
+      const label=document.createElement('span');label.textContent=item.name;
+      button.append(img,label);button.addEventListener('click',()=>show(index));thumbs.append(button);
+    });
+    function open(){lastFocus=document.activeElement;show(0);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('notesDetailsClose').focus();}
+    function close(){overlay.hidden=true;document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+    document.getElementById('notesDetailsOpen').addEventListener('click',open);
+    document.getElementById('notesDetailsTitle').addEventListener('click',open);
+    document.getElementById('notesDetailsClose').addEventListener('click',close);
+    document.getElementById('notesPrev').addEventListener('click',()=>show(current-1));
+    document.getElementById('notesNext').addEventListener('click',()=>show(current+1));
+    overlay.addEventListener('click',event=>{if(event.target===overlay)close();});
+    document.addEventListener('keydown',event=>{
+      if(overlay.hidden)return;
+      if(event.key==='Escape'){event.preventDefault();close();}
+      else if(event.key==='ArrowLeft'){show(current-1);}
+      else if(event.key==='ArrowRight'){show(current+1);}
+      else if(event.key==='Tab'){
+        const controls=[...dialog.querySelectorAll('button:not([disabled]),a[href]')].filter(el=>el.getClientRects().length);
+        if(!controls.length)return;
+        if(event.shiftKey&&document.activeElement===controls[0]){controls[controls.length-1].focus();event.preventDefault();}
+        else if(!event.shiftKey&&document.activeElement===controls[controls.length-1]){controls[0].focus();event.preventDefault();}
+      }
+    });
+    show(0);
+  })();
+  </script>
 </body>
 </html>

@@ -47,11 +47,22 @@
     .details-about h2{font-size:clamp(1.55rem,3vw,2.1rem);letter-spacing:-.035em;margin:12px 0 12px;color:#142f51}
     .details-subtitle{color:#44647f;line-height:1.62;font-size:.99rem;margin:0 0 18px}
     .details-icon{width:60px;height:60px;background:#def3ff;border:1px solid #b7daee;border-radius:16px;display:grid;place-items:center;font-size:30px}
-    .details-features{background:#eaf4fd;border-radius:15px;padding:18px;margin:0 0 20px}
-    .details-features h3{margin:0 0 11px;color:#1b4266;font-size:1.02rem}
-    .details-features ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
-    .details-features li{display:flex;gap:10px;align-items:start;font-size:.93rem;color:#335876}
-    .details-features li::before{content:'✓';font-size:1.1rem;color:#1783bd;font-weight:800;line-height:1.3}
+    .details-features{margin:1px 0 18px}
+    .details-features h3{margin:0 0 13px;color:#18355b;font-size:1.12rem;letter-spacing:-.015em}
+    .details-feature-grid{display:grid;gap:8px}
+    .details-feature{display:flex;align-items:center;gap:11px;min-height:72px;padding:10px 12px;border-radius:14px;border:1px solid #ffffffa8;box-shadow:0 2px 9px #3156780a}
+    .details-feature-icon{width:49px;height:49px;flex:0 0 49px;display:flex;align-items:center;justify-content:center;border-radius:14px}
+    .details-feature-icon svg{width:29px;height:29px;display:block}
+    .details-feature-copy{display:grid;gap:3px;min-width:0}
+    .details-feature-copy strong{font-size:.93rem;line-height:1.22;color:#152f52;font-weight:800}
+    .details-feature-copy span{font-size:.81rem;line-height:1.28;color:#54718c}
+    .feature-blue{background:linear-gradient(105deg,#e5f3ff,#edf7ff)}.feature-blue .details-feature-icon{background:#d2e9ff;color:#1478ea}
+    .feature-pink{background:linear-gradient(105deg,#ffedf7,#fff2f9)}.feature-pink .details-feature-icon{background:#ffdaee;color:#ed329b}
+    .feature-green{background:linear-gradient(105deg,#e2faf0,#ecfbf6)}.feature-green .details-feature-icon{background:#c8f4df;color:#0aaa72}
+    .feature-purple{background:linear-gradient(105deg,#f1e8ff,#f7efff)}.feature-purple .details-feature-icon{background:#e6d7ff;color:#9431df}
+    .feature-orange{background:linear-gradient(105deg,#fff1d7,#fff7e7)}.feature-orange .details-feature-icon{background:#ffead0;color:#f38408}
+    .feature-rose{background:linear-gradient(105deg,#ffe5f1,#ffedf5)}.feature-rose .details-feature-icon{background:#ffcfe3;color:#ea287b}
+    @media(max-width:420px){.details-feature{min-height:70px;padding:9px;gap:9px}.details-feature-icon{width:43px;height:43px;flex-basis:43px}.details-feature-copy strong{font-size:.89rem}.details-feature-copy span{font-size:.79rem}}
     .details-download{width:100%;justify-content:center;background:#126bc3;color:white;font-size:1.07rem}
     .details-download:hover{background:#08559d}
     .details-footnote{font-size:.77rem;color:#607991;text-align:center;margin:8px 0 0}
@@ -63,7 +74,7 @@
     .notes-cover-button img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .18s ease}
     .notes-cover-button:hover img,.notes-cover-button:focus-visible img{transform:scale(1.025)}
     .notes-cover-button:focus-visible{outline:3px solid #a8ebf4;outline-offset:3px}
-    .notes-cover-hint{position:absolute;right:10px;bottom:10px;background:#0a2346ee;border:1px solid #8ddae8;color:#fff;border-radius:9px;font-size:.8rem;font-weight:700;padding:8px 11px;box-shadow:0 3px 10px #0004}
+    
 
     /* Separate platform choices; Android remains visibly unavailable until its app is published. */
     .platform-downloads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin-top:8px}
@@ -90,7 +101,7 @@
     <main id="top">
       <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, G Chat Cleaner, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
-        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"><span class="notes-cover-hint">View screenshots &amp; details →</span></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Choose Windows or Android"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download aria-label="Download My Creative Notes for Windows"><span class="platform-icon" aria-hidden="true">🖥️</span><span>Windows<small>Download for PC</small></span></a><span class="platform-download platform-android platform-pending" aria-label="My Creative Notes Android app on Google Play is coming soon" title="Coming soon to Google Play"><span class="platform-icon" aria-hidden="true">📱</span><span>Android<small>Google Play · Coming soon</small></span></span></div></div></article>
+        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Choose Windows or Android"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download aria-label="Download My Creative Notes for Windows"><span class="platform-icon" aria-hidden="true">🖥️</span><span>Windows<small>Download for PC</small></span></a><span class="platform-download platform-android platform-pending" aria-label="My Creative Notes Android app on Google Play is coming soon" title="Coming soon to Google Play"><span class="platform-icon" aria-hidden="true">📱</span><span>Android<small>Google Play · Coming soon</small></span></span></div></div></article>
         <article class="card"><div class="app-symbol" aria-hidden="true">🧹</div><div class="app-title">G Chat Cleaner</div><div class="app-version">v3 · Browser bookmarklet</div><p>A convenient tool for selecting and managing conversations in your ChatGPT sidebar.</p><div class="card-footer"><span class="soon">Downloads coming soon</span></div></article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section>
@@ -118,17 +129,17 @@
           <div class="details-icon" aria-hidden="true">📚</div>
           <h2 id="notesDetailsHeading">My Creative Notes</h2>
           <p id="notesDetailsDescription" class="details-subtitle">Keep notes, lists and everyday information together in one easy place. Organise the different parts of your life with tabs and a customisable sidebar.</p>
-          <div class="details-features">
-            <h3>What you can do</h3>
-            <ul>
-              <li>Organise notes into separate tabs and sections</li>
-              <li>Rearrange sidebar sections with drag-and-drop</li>
-              <li>Search across your saved information</li>
-              <li>Keep everyday lists and reminders together</li>
-              <li>Save notes on your own computer and back them up</li>
-              <li>Check for app updates through BroKaz App Hub</li>
-            </ul>
-          </div>
+          <section class="details-features" aria-labelledby="notesFeaturesHeading">
+            <h3 id="notesFeaturesHeading">What you can do</h3>
+            <div class="details-feature-grid">
+              <div class="details-feature feature-blue"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3z"/><path d="M3 10h18"/></svg></span><div class="details-feature-copy"><strong>Organise notes into tabs</strong><span>Keep work, personal, study and more separate.</span></div></div>
+              <div class="details-feature feature-pink"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 1.5 1.5L7 5"/><path d="M10 6h11"/><path d="m3 12 1.5 1.5L7 11"/><path d="M10 12h11"/><path d="m3 18 1.5 1.5L7 17"/><path d="M10 18h11"/></svg></span><div class="details-feature-copy"><strong>Create notes and checklists</strong><span>Make lists for tasks, shopping, ideas and more.</span></div></div>
+              <div class="details-feature feature-green"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></span><div class="details-feature-copy"><strong>Search your information</strong><span>Find notes quickly across all your tabs.</span></div></div>
+              <div class="details-feature feature-purple"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.3 14 3l.7 2 2 .8 2-.9 2 2-1 2 .8 2 2 .7v2.9l-2 .7-.8 2 1 2-2 2-2-1-2 .8-.7 2H10l-.7-2-2-.8-2 1-2-2 1-2-.8-2-2-.7v-2.9l2-.7.8-2-1-2 2-2 2 .9 2-.8.7-2z"/><circle cx="12" cy="12" r="3.1"/></svg></span><div class="details-feature-copy"><strong>Customise settings</strong><span>Personalise your layout and rearrange sections.</span></div></div>
+              <div class="details-feature feature-orange"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="13" rx="1.7"/><path d="M2 20h20l-2-3H4z"/></svg></span><div class="details-feature-copy"><strong>Simple and easy to use</strong><span>Keep notes on your PC and make backups.</span></div></div>
+              <div class="details-feature feature-rose"><span class="details-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-5L3 9"/><path d="M3 3v6h6"/><path d="M4 13a8 8 0 0 0 14 5l3-3"/><path d="M21 21v-6h-6"/></svg></span><div class="details-feature-copy"><strong>Check for updates</strong><span>Find new versions through BroKaz App Hub.</span></div></div>
+            </div>
+          </section>
           <div class="platform-downloads platform-downloads-popup" role="group" aria-label="Choose Windows or Android"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download aria-label="Download My Creative Notes for Windows"><span class="platform-icon" aria-hidden="true">🖥️</span><span>Windows<small>Download for PC</small></span></a><span class="platform-download platform-android platform-pending" aria-label="My Creative Notes Android app on Google Play is coming soon" title="Coming soon to Google Play"><span class="platform-icon" aria-hidden="true">📱</span><span>Android<small>Google Play · Coming soon</small></span></span></div> 
           <p class="details-footnote">Windows: desktop installer · Android: Google Play coming soon · Notes stay on each device unless you transfer a backup.</p>
         </div>

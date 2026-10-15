@@ -64,6 +64,18 @@
     .notes-cover-button:hover img,.notes-cover-button:focus-visible img{transform:scale(1.025)}
     .notes-cover-button:focus-visible{outline:3px solid #a8ebf4;outline-offset:3px}
     .notes-cover-hint{position:absolute;right:10px;bottom:10px;background:#0a2346ee;border:1px solid #8ddae8;color:#fff;border-radius:9px;font-size:.8rem;font-weight:700;padding:8px 11px;box-shadow:0 3px 10px #0004}
+
+    /* Separate platform choices; Android remains visibly unavailable until its app is published. */
+    .platform-downloads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin-top:8px}
+    .platform-download{display:flex;align-items:center;justify-content:center;gap:10px;min-height:64px;padding:12px;border-radius:12px;border:1px solid #82bdd5;box-sizing:border-box;font-weight:800;font-size:1.05rem;text-align:left;text-decoration:none;line-height:1.3;white-space:nowrap;transition:transform .12s ease,filter .12s ease}
+    .platform-download small{display:block;font-size:.72rem;font-weight:600;margin-top:3px;white-space:normal}
+    .platform-download .platform-icon{font-size:1.65rem;flex:none}
+    .platform-win{background:#6bdaf0;color:#0b2c43;border-color:#75f4fa}
+    .platform-win:hover,.platform-win:focus-visible{transform:translateY(-2px);filter:brightness(1.05)}
+    .platform-android{background:#287aaa;color:#fff;border-color:#87b8d8}
+    .platform-pending{opacity:.56;cursor:not-allowed}
+    .platform-downloads-popup{margin:20px 0 10px}
+    @media(max-width:390px){.platform-downloads{gap:6px}.platform-download{gap:5px;padding:10px 6px;font-size:.86rem}.platform-download small{font-size:.67rem}.platform-download .platform-icon{font-size:1.2rem}}
   </style>
 </head>
 <body>
@@ -72,7 +84,7 @@
     <main id="top">
       <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, G Chat Cleaner, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
-        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"><span class="notes-cover-hint">View screenshots &amp; details →</span></button><div class="card-footer notes-actions"><a class="cta" style="font-size:.9rem;padding:10px 15px;margin:0" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a></div></article>
+        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"><span class="notes-cover-hint">View screenshots &amp; details →</span></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Choose Windows or Android"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download aria-label="Download My Creative Notes for Windows"><span class="platform-icon" aria-hidden="true">🖥️</span><span>Windows<small>Download for PC</small></span></a><span class="platform-download platform-android platform-pending" aria-label="My Creative Notes for Android coming soon"><span class="platform-icon" aria-hidden="true">📱</span><span>Android<small>Coming soon</small></span></span></div></div></article>
         <article class="card"><div class="app-symbol" aria-hidden="true">🧹</div><div class="app-title">G Chat Cleaner</div><div class="app-version">v3 · Browser bookmarklet</div><p>A convenient tool for selecting and managing conversations in your ChatGPT sidebar.</p><div class="card-footer"><span class="soon">Downloads coming soon</span></div></article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section>
@@ -111,7 +123,7 @@
               <li>Check for app updates through BroKaz App Hub</li>
             </ul>
           </div>
-          <a class="cta details-download" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a>
+          <div class="platform-downloads platform-downloads-popup" role="group" aria-label="Choose Windows or Android"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download aria-label="Download My Creative Notes for Windows"><span class="platform-icon" aria-hidden="true">🖥️</span><span>Windows<small>Download for PC</small></span></a><span class="platform-download platform-android platform-pending" aria-label="My Creative Notes for Android coming soon"><span class="platform-icon" aria-hidden="true">📱</span><span>Android<small>Coming soon</small></span></span></div> 
           <p class="details-footnote">Windows desktop app · No example notes are included in the installer</p>
         </div>
       </div>

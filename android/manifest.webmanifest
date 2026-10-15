@@ -1,0 +1,26 @@
+{
+  "id": "/android/",
+  "name": "My Creative Notes",
+  "short_name": "Creative Notes",
+  "description": "Your notes, lists and daily plans, saved on your phone.",
+  "lang": "en-NZ",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf4fa",
+  "theme_color": "#193857",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -37,8 +37,10 @@
     .details-nav:hover,.details-nav:focus-visible{background:#cdeeff}
     .details-prev{left:9px}.details-next{right:9px}
     .details-caption{min-height:60px;margin:12px 0 14px}.details-caption strong{display:block;font-size:1.06rem}.details-caption span{display:block;color:#5f7790;font-size:.91rem}
-    .details-thumbnails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-    .details-thumb{appearance:none;border:2px solid transparent;background:#ecf4fa;border-radius:10px;padding:5px;cursor:pointer;color:#325475;text-align:center;font:inherit;font-size:.76rem;line-height:1.25}
+    .details-thumbnails{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+    .details-reset{border:0;background:transparent;color:#2478b5;cursor:pointer;font:inherit;font-weight:700;font-size:.86rem;margin:-4px 0 12px;padding:3px 0}
+    .details-reset:hover,.details-reset:focus-visible{text-decoration:underline;text-underline-offset:3px}
+    .details-thumb{appearance:none;border:2px solid transparent;background:#ecf4fa;border-radius:10px;padding:4px;cursor:pointer;color:#325475;text-align:center;font:inherit;font-size:.76rem;line-height:1.25}
     .details-thumb img{width:100%;height:auto;aspect-ratio:1200/755;object-fit:cover;border-radius:6px;display:block;margin-bottom:4px}
     .details-thumb:hover,.details-thumb:focus-visible{background:#ddecf7}
     .details-thumb[aria-current="true"]{border-color:#127ed5;background:#e6f5ff;color:#0c5794;font-weight:750}
@@ -80,11 +82,11 @@
       <div class="details-layout">
         <div class="details-gallery">
           <div class="details-main">
-            <img id="notesGalleryImage" src="previews/my-creative-notes/overview.svg" width="1200" height="755" alt="Illustrative My Creative Notes screen showing tabs, sidebar and example notes">
+            <img id="notesGalleryImage" src="previews/my-creative-notes/showcase.png" width="1448" height="1086" alt="Colourful My Creative Notes showcase with fictional example content">
             <button type="button" class="details-nav details-prev" id="notesPrev" aria-label="Previous screenshot">‹</button>
             <button type="button" class="details-nav details-next" id="notesNext" aria-label="Next screenshot">›</button>
           </div>
-          <div id="notesGalleryCaption" class="details-caption" aria-live="polite"><strong>Everything in one place</strong><span>Quickly navigate between tabs, sections and example notes.</span></div>
+          <div id="notesGalleryCaption" class="details-caption" aria-live="polite"><strong>My Creative Notes showcase</strong><span>Explore the colourful sample screens below.</span></div><button class="details-reset" id="notesShowcaseReturn" type="button">↶ Show main showcase</button>
           <div id="notesGalleryThumbnails" class="details-thumbnails" role="group" aria-label="My Creative Notes screenshot examples"></div>
           <p class="details-demo-note">Illustrative previews with fictional example notes; the installed app may look slightly different.</p>
         </div>
@@ -114,10 +116,11 @@
   <script>
   (function(){
     const previews=[
+      {src:'previews/my-creative-notes/showcase.png',name:'Main showcase',title:'My Creative Notes showcase',description:'A colourful introduction to your notes, lists and everyday organisation.',alt:'Colourful example of My Creative Notes with fictional demo content'},
       {src:'previews/my-creative-notes/overview.svg',name:'Main view',title:'Everything in one place',description:'Access tabs, sections and your notes from one clear screen.',alt:'Illustrated main view with Personal and Work tabs and sample notes'},
       {src:'previews/my-creative-notes/work.svg',name:'Work tab',title:'Organise work information',description:'Separate weekly plans, meeting notes and ideas into useful sections.',alt:'Illustrated Work tab with fictional weekly priorities'},
       {src:'previews/my-creative-notes/personal.svg',name:'Personal tab',title:'Keep personal plans together',description:'Save ideas, appointments, recipes and everyday reminders.',alt:'Illustrated Personal tab with fictional weekend plans'},
-      {src:'previews/my-creative-notes/search.svg',name:'Search',title:'Find information quickly',description:'Search for a word or topic to locate matching notes.',alt:'Illustrated search for recipe showing fictional search results'},
+      {src:'previews/my-creative-notes/search.svg',name:'Search',title:'Find information quickly',description:'Search for a word or topic to locate matching notes.',alt:'Illustrated travel search with fictional results'},
       {src:'previews/my-creative-notes/lists.svg',name:'Lists',title:'Make everyday lists',description:'Use simple lists to track things such as shopping and tasks.',alt:'Illustrated shopping list with generic sample items'},
       {src:'previews/my-creative-notes/settings.svg',name:'Settings',title:'Settings and updates',description:'Check for updates and manage your note backups.',alt:'Illustrated Settings panel with Check for updates and backup controls'}
     ];
@@ -135,14 +138,14 @@
       const heading=document.createElement('strong');heading.textContent=item.title;
       const body=document.createElement('span');body.textContent=item.description;
       caption.append(heading,body);
-      [...thumbs.children].forEach((button,index)=>button.setAttribute('aria-current',String(index===current)));
+      [...thumbs.children].forEach((button,index)=>button.setAttribute('aria-current',String(index+1===current)));
     }
-    previews.forEach((item,index)=>{
+    previews.slice(1).forEach((item,index)=>{
       const button=document.createElement('button');button.type='button';button.className='details-thumb';
       button.setAttribute('aria-label','Show '+item.name+' example');button.setAttribute('aria-current','false');
       const img=document.createElement('img');img.src=item.src;img.alt='';img.width=190;img.height=120;img.loading='lazy';
       const label=document.createElement('span');label.textContent=item.name;
-      button.append(img,label);button.addEventListener('click',()=>show(index));thumbs.append(button);
+      button.append(img,label);button.addEventListener('click',()=>show(index+1));thumbs.append(button);
     });
     function open(){lastFocus=document.activeElement;show(0);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('notesDetailsClose').focus();}
     function close(){overlay.hidden=true;document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
@@ -151,6 +154,13 @@
     document.getElementById('notesDetailsClose').addEventListener('click',close);
     document.getElementById('notesPrev').addEventListener('click',()=>show(current-1));
     document.getElementById('notesNext').addEventListener('click',()=>show(current+1));
+    document.getElementById('notesShowcaseReturn').addEventListener('click',()=>show(0));
+    main.addEventListener('error',()=>{
+      // Until the official PNG is uploaded, the gallery still shows a safe demo image.
+      if(main.getAttribute('src')==='previews/my-creative-notes/showcase.png'){
+        main.src='previews/my-creative-notes/overview.svg';
+      }
+    });
     overlay.addEventListener('click',event=>{if(event.target===overlay)close();});
     document.addEventListener('keydown',event=>{
       if(overlay.hidden)return;

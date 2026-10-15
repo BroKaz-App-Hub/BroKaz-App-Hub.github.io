@@ -58,6 +58,12 @@
     .details-demo-note{color:#617c92;margin:11px 0 0;font-size:.82rem}
     @media(max-width:810px){.details-layout{grid-template-columns:1fr}.details-dialog{padding:22px}.details-thumbnails{grid-template-columns:repeat(3,minmax(0,1fr))}.details-about h2{margin-top:6px}.details-overlay{padding:10px}.details-dialog{max-height:calc(100dvh - 20px)}}
     @media(max-width:420px){.details-thumbnails{grid-template-columns:repeat(2,minmax(0,1fr))}.details-dialog{padding:14px}.details-layout{gap:17px}}
+    .notes-card{padding:18px}
+    .notes-cover-button{position:relative;display:block;appearance:none;background:#174361;border:1px solid #4c728f;box-shadow:0 6px 19px #071a2b80;padding:0;width:100%;aspect-ratio:1448/1024;border-radius:14px;overflow:hidden;cursor:pointer;margin:0 0 15px}
+    .notes-cover-button img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .18s ease}
+    .notes-cover-button:hover img,.notes-cover-button:focus-visible img{transform:scale(1.025)}
+    .notes-cover-button:focus-visible{outline:3px solid #a8ebf4;outline-offset:3px}
+    .notes-cover-hint{position:absolute;right:10px;bottom:10px;background:#0a2346ee;border:1px solid #8ddae8;color:#fff;border-radius:9px;font-size:.8rem;font-weight:700;padding:8px 11px;box-shadow:0 3px 10px #0004}
   </style>
 </head>
 <body>
@@ -66,7 +72,7 @@
     <main id="top">
       <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, G Chat Cleaner, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
-        <article class="card"><div class="app-symbol" aria-hidden="true">📚</div><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><div class="card-footer notes-actions"><a class="cta" style="font-size:.9rem;padding:10px 15px;margin:0" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a><button type="button" class="details-open" id="notesDetailsOpen" aria-haspopup="dialog" aria-controls="notesDetails">View details &amp; screenshots →</button></div></article>
+        <article class="card notes-card"><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"><span class="notes-cover-hint">View screenshots &amp; details →</span></button><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Keep your notes, lists and everyday information together. Rearrange sidebar sections, check for updates in the app, and enjoy a streamlined installer.</p><div class="card-footer notes-actions"><a class="cta" style="font-size:.9rem;padding:10px 15px;margin:0" href="https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe" download>Download</a></div></article>
         <article class="card"><div class="app-symbol" aria-hidden="true">🧹</div><div class="app-title">G Chat Cleaner</div><div class="app-version">v3 · Browser bookmarklet</div><p>A convenient tool for selecting and managing conversations in your ChatGPT sidebar.</p><div class="card-footer"><span class="soon">Downloads coming soon</span></div></article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section>
@@ -121,7 +127,7 @@
       {src:'previews/my-creative-notes/work.svg',name:'Work Tab',title:'Organise work information',description:'Separate weekly plans, meeting notes and ideas into useful sections.',alt:'Illustrated Work tab with fictional weekly priorities'},
       {src:'previews/my-creative-notes/personal.svg',name:'Personal Tab',title:'Keep personal plans together',description:'Save ideas, appointments, recipes and everyday reminders.',alt:'Illustrated Personal tab with fictional weekend plans'},
       {src:'previews/my-creative-notes/lists.svg',name:'Lists Example',title:'Make everyday lists',description:'Use simple lists to track things such as shopping and tasks.',alt:'Illustrated shopping list with generic sample items'},
-      {src:'previews/my-creative-notes/settings.svg',name:'Settings',title:'Settings and updates',description:'Check for updates and manage your note backups.',alt:'Illustrated Settings panel with Check for updates and backup controls'}
+      {src:'previews/my-creative-notes/settings.svg',name:'Settings',title:'Settings and updates',description:'Check for updates and manage your note backups.',alt:'Illustrated Settings panel with Check for updates and backup controls'},
       {src:'previews/my-creative-notes/search.svg',name:'Search',title:'Find information quickly',description:'Search for a word or topic to locate matching notes.',alt:'Illustrated travel search with fictional results'},
     ];
     const overlay=document.getElementById('notesDetails');
@@ -149,7 +155,7 @@
     });
     function open(){lastFocus=document.activeElement;show(0);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('notesDetailsClose').focus();}
     function close(){overlay.hidden=true;document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
-    document.getElementById('notesDetailsOpen').addEventListener('click',open);
+    document.getElementById('notesDetailsCover').addEventListener('click',open);
     document.getElementById('notesDetailsTitle').addEventListener('click',open);
     document.getElementById('notesDetailsClose').addEventListener('click',close);
     document.getElementById('notesPrev').addEventListener('click',()=>show(current-1));

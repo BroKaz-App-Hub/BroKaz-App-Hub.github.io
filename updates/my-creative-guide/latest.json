@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "app_id": "my-creative-guide",
-  "name": "My Creative Guide",
+  "name": "My Creative Notes",
   "version": 6,
   "platform": "windows-x64",
   "installer_url": "https://brokaz-app-hub.github.io/downloads/My-Creative-Guide-Setup-v6.exe",
   "sha256": "b5ee68d7daa76b89086645be9323c39c09b1fe4d13a10d6c14fab5577c08bc54",
   "size_bytes": 8781312,
-  "release_notes": "My Creative Guide Desktop v6 with inline update status, shared data and standalone/regular-tab views.",
+  "release_notes": "Legacy v6 release, originally named My Creative Guide. The v7 My Creative Notes installer is not yet public.",
   "published_at": "2026-10-15"
 }

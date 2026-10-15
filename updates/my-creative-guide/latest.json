@@ -2,11 +2,11 @@
   "schema": 1,
   "app_id": "my-creative-guide",
   "name": "My Creative Notes",
-  "version": 10,
+  "version": 11,
   "platform": "windows-x64",
-  "installer_url": "https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v10.exe",
-  "sha256": "3179f4595c478f4c2e89d21dcce3283f262184fb5218bcfe68a868af0705be98",
-  "size_bytes": 8370688,
-  "release_notes": "My Creative Notes v10: fixes sidebar selection and Settings closing unexpectedly; simplified installer messages, automatic launch after installation, and the same protected local notes storage.",
-  "published_at": "2026-10-15"
+  "installer_url": "https://brokaz-app-hub.github.io/downloads/My-Creative-Notes-Setup-v11.exe",
+  "sha256": "887653f4894b9d7813d8276b391c7ff19175ac03ae2cf41d25c1c8a36267912e",
+  "size_bytes": 10705920,
+  "release_notes": "My Creative Notes v11: seven colour themes with smooth gradients, remembered theme choices, a proper Windows uninstall option that preserves notes, and improved handling of already-running app instances.",
+  "published_at": "2026-10-16"
 }

@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.12",
+  "version": "8.0.13",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.12: simplified App Access by removing Open in Chrome and Already Open in Browser."
+  "notes": "Version 8.0.13: App Access displays one device-appropriate action: Windows taskbar, Mac Dock, or phone Home Screen."
 }

@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.1: simplified Settings by removing the Webpage Edition explanation and the redundant syncing sentence."
+  "notes": "Version 8.0.2: updates open in the same browser tab; blue means up to date and green means an update is available."
 }

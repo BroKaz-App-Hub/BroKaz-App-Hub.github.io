@@ -1183,7 +1183,7 @@ async function mcnOpenNewVersion(){
   const response=await fetch(check.href,{cache:'no-store'});
   if(!response.ok)throw Error('Website returned '+response.status);
   const html=await response.text();
-  const detected=html.match(/const MCN_WEB_VERSION='(\\d+\\.\\d+\\.\\d+)'/);
+  const detected=html.match(/const MCN_WEB_VERSION='(\d+\.\d+\.\d+)'/);
   if(!detected||mcnVersionCompare(detected[1],version)<0){
    alert('The new version has been announced, but the website is still publishing it. Please try Get update again in a minute.');
    return;

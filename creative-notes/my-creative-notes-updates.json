@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.4: App Access now requests browser installation when supported, with taskbar and Home Screen instructions as a fallback."
+  "notes": "Version 8.0.5: Pin to Taskbar no longer expands the Windows instructions panel; supported browser installation remains available."
 }

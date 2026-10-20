@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.13",
+  "version": "8.0.14",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.13: App Access displays one device-appropriate action: Windows taskbar, Mac Dock, or phone Home Screen."
+  "notes": "Version 8.0.14: experimental Switch View in Settings with confirmation, unsaved-edit safeguard and browser-permission-aware window handling."
 }

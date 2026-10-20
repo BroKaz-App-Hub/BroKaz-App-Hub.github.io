@@ -144,7 +144,7 @@
 @media(max-width:520px){.mcnUpdateDialogActions{display:grid;grid-template-columns:1fr}.mcnUpdateDialogActions .btn{width:100%}}
 </style><style id="mcnReceiveStyles">.mcnReceiveOverlay{position:fixed;inset:0;z-index:99990;background:rgba(10,24,36,.70);display:grid;place-items:center;padding:16px}.mcnReceiveOverlay.hidden{display:none}.mcnReceiveDialog{background:#fff;color:#203449;border-radius:16px;max-width:440px;width:100%;max-height:90dvh;overflow:auto;padding:22px;box-shadow:0 12px 50px #0005}.mcnReceiveDialog h2{margin:0 0 10px;font-size:1.4rem}.mcnReceiveDialog p{font-size:.89rem;line-height:1.5;margin:8px 0 15px}.mcnReceiveDialog .btn{display:block;margin-top:12px;width:100%;white-space:normal}</style><style id="mcnV7Styles">.mcnConfirmActions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.mcnConfirmActions .btn{width:auto;min-width:95px;margin:0}.mcnReceiveDialog{max-width:460px}.mcnReceiveDialog .btn:focus-visible{outline:3px solid #2674b7;outline-offset:2px}</style><style id="mcnV8SidebarStyles">
 .sidebarClose{display:block!important;width:calc(100% - 18px);cursor:pointer}
-.sidebarReopen{display:none;min-width:43px;flex:none}
+.sidebarReopen{display:inline-flex;align-items:center;justify-content:center;min-width:43px;flex:none}
 .shell.mcnSidebarHidden{grid-template-columns:minmax(0,1fr)}
 .shell.mcnSidebarHidden>.sidebar{display:none}
 .shell.mcnSidebarHidden .sidebarReopen{display:inline-flex;align-items:center;justify-content:center}
@@ -155,7 +155,7 @@
  .shell:not(.mcnSidebarHidden)>.sidebar:not(.open){transform:translateX(-100%)}
 }
 </style></head><body>
-<div class="shell"><aside class="sidebar" id="sidebar"><div class="brand"><div class="brandRow" id="guideBrandName"><div class="brandIcon" aria-hidden="true">📚</div><div class="brandOwner" id="guideBrandOwner">My</div></div><div class="brandRest">Creative Notes</div><div class="sub">Your information, easy to find</div></div><nav id="nav" class="nav"></nav><div class="sidebottom"><button type="button" class="sidebarClose" onclick="closeSidebar()" aria-label="Hide sidebar">⇤ Hide Sidebar</button></div></aside><main class="main"><div class="tabs" id="tabs" role="tablist" aria-label="Creative notes categories"></div><div class="topbar"><button class="btn sidebarReopen" id="sidebarReopen" type="button" onclick="toggleSidebar()" aria-label="Show sidebar" title="Show sidebar">☰</button><input id="search" class="search" placeholder="🔎 Search all your information…" aria-label="Search all notes"><div class="topright"><button class="btn" onclick="showHome()">⌂ Home</button><div class="settingsWrap" id="settingsWrap"><button class="btn settingsCog" id="settingsButton" aria-label="Settings" title="Settings" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" onclick="toggleSettings()">⚙</button><div class="settingsMenu hidden" id="settingsMenu" aria-label="Settings"><div class="settingsTitle">⚙ Settings</div><form class="personaliseGuide" onsubmit="saveGuideName();return false"><label for="guideOwnerName">Personalise your guide</label><input id="guideOwnerName" type="text" autocomplete="off" maxlength="16" placeholder=""><div class="settingsNamePreview" id="guideNamePreview">My Creative Notes</div><button class="saveNameButton" type="submit">Save Name</button></form><div class="settingsDivider"></div><div class="settingsSectionLabel" id="mcnThemeHeading">Colour theme</div><div class="mcnThemePicker" id="mcnThemePicker" role="group" aria-labelledby="mcnThemeHeading">
+<div class="shell"><aside class="sidebar" id="sidebar"><div class="brand"><div class="brandRow" id="guideBrandName"><div class="brandIcon" aria-hidden="true">📚</div><div class="brandOwner" id="guideBrandOwner">My</div></div><div class="brandRest">Creative Notes</div><div class="sub">Your information, easy to find</div></div><nav id="nav" class="nav"></nav></aside><main class="main"><div class="tabs" id="tabs" role="tablist" aria-label="Creative notes categories"></div><div class="topbar"><button class="btn sidebarReopen" id="sidebarReopen" type="button" onclick="toggleSidebar()" aria-label="Hide sidebar" title="Hide sidebar" aria-expanded="true" aria-controls="sidebar">☰</button><input id="search" class="search" placeholder="🔎 Search all your information…" aria-label="Search all notes"><div class="topright"><button class="btn" onclick="showHome()">⌂ Home</button><div class="settingsWrap" id="settingsWrap"><button class="btn settingsCog" id="settingsButton" aria-label="Settings" title="Settings" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" onclick="toggleSettings()">⚙</button><div class="settingsMenu hidden" id="settingsMenu" aria-label="Settings"><div class="settingsTitle">⚙ Settings</div><form class="personaliseGuide" onsubmit="saveGuideName();return false"><label for="guideOwnerName">Personalise your guide</label><input id="guideOwnerName" type="text" autocomplete="off" maxlength="16" placeholder=""><div class="settingsNamePreview" id="guideNamePreview">My Creative Notes</div><button class="saveNameButton" type="submit">Save Name</button></form><div class="settingsDivider"></div><div class="settingsSectionLabel" id="mcnThemeHeading">Colour theme</div><div class="mcnThemePicker" id="mcnThemePicker" role="group" aria-labelledby="mcnThemeHeading">
 <button type="button" class="themeOption" data-theme-choice="default" aria-pressed="true" onclick="chooseMcnTheme('default')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Default</span></button>
 <button type="button" class="themeOption" data-theme-choice="blue" aria-pressed="false" onclick="chooseMcnTheme('blue')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Blue</span></button>
 <button type="button" class="themeOption" data-theme-choice="teal" aria-pressed="false" onclick="chooseMcnTheme('teal')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Teal</span></button>
@@ -167,7 +167,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.6</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.7</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -698,14 +698,12 @@ function mcnSetSidebarHidden(hidden){
  document.querySelector('.shell').classList.toggle('mcnSidebarHidden',mcnSidebarHidden);
  if(mcnSidebarHidden)el('sidebar').classList.remove('open');
  const btn=el('sidebarReopen');
- if(btn){btn.setAttribute('aria-label',mcnSidebarHidden?'Show sidebar':'Sidebar menu');btn.title=mcnSidebarHidden?'Show sidebar':'Sidebar menu'}
+ if(btn){const opened=!mcnSidebarHidden;btn.setAttribute('aria-label',opened?'Hide sidebar':'Show sidebar');btn.title=opened?'Hide sidebar':'Show sidebar';btn.setAttribute('aria-expanded',String(opened));btn.textContent=opened?'☰':'☰'}
  try{localStorage.setItem(MCN_SIDEBAR_KEY,mcnSidebarHidden?'1':'0')}catch(e){}
 }
 function toggleSidebar(){
- if(window.matchMedia('(max-width:800px)').matches){
-  if(mcnSidebarHidden){mcnSetSidebarHidden(false);el('sidebar').classList.add('open')}
-  else el('sidebar').classList.toggle('open');
- }else mcnSetSidebarHidden(!mcnSidebarHidden);
+ mcnSetSidebarHidden(!mcnSidebarHidden);
+ if(window.matchMedia('(max-width:800px)').matches&&!mcnSidebarHidden)el('sidebar').classList.add('open');
 }
 function closeSidebar(){mcnSetSidebarHidden(true)}
 mcnSetSidebarHidden(mcnSidebarHidden);
@@ -1094,7 +1092,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.6';
+const MCN_WEB_VERSION='8.0.7';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};
@@ -1131,23 +1129,32 @@ function mcnRefreshUpdateDisplay(){
 }
 async function mcnCheckForUpdates(){
  if(mcnUpdateState.checking)return;
- const feed=mcnUpdateFeedUrl(),validated=mcnSafeHttpsUrl(feed,location.href);
- if(!validated){mcnUpdateState={type:'unconfigured',latest:null,lastChecked:Date.now(),checking:false};mcnRefreshUpdateDisplay();return}
  mcnUpdateState.checking=true;mcnRefreshUpdateDisplay();
- const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8500);
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),10000);
  try{
-  const response=await fetch(validated,{cache:'no-store',credentials:'omit',signal:controller.signal});
-  if(!response.ok)throw Error('HTTP '+response.status);
-  const info=await response.json();
-  if(!info||info.app!=='my-creative-notes-web'||typeof info.version!=='string')throw Error('Invalid update manifest');
-  const version=info.version;
-  const compare=mcnVersionCompare(version,MCN_WEB_VERSION);
-  if(compare===null)throw Error('Invalid version');
-  const url=mcnSafeHttpsUrl(info.url,validated);
-  if(compare>0&&!url)throw Error('Invalid update address');
-  mcnUpdateState={type:compare>0?'available':'current',latest:compare>0?{version,url,notes:typeof info.notes==='string'?info.notes.slice(0,300):''}:null,lastChecked:Date.now(),checking:false};
- }catch(error){console.warn('Creative Notes manual update check:',error.message);mcnUpdateState={type:'error',latest:null,lastChecked:Date.now(),checking:false}}
- finally{clearTimeout(timeout);mcnRefreshUpdateDisplay()}
+  // The public site can briefly lag behind the repository following a release.
+  // Check both version files on an explicit user click; use the newest valid result.
+  const published=mcnUpdateFeedUrl();
+  const source='https://raw.githubusercontent.com/BroKaz-App-Hub/BroKaz-App-Hub.github.io/main/creative-notes/my-creative-notes-updates.json';
+  const addresses=[published,source].map(url=>mcnSafeHttpsUrl(url,location.href)).filter(Boolean);
+  const results=await Promise.allSettled(addresses.map(async address=>{
+   const url=new URL(address);url.searchParams.set('_check',String(Date.now()));
+   const response=await fetch(url.href,{cache:'no-store',credentials:'omit',signal:controller.signal});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const info=await response.json();
+   if(!info||info.app!=='my-creative-notes-web'||typeof info.version!=='string'||mcnVersionCompare(info.version,MCN_WEB_VERSION)===null)throw Error('Invalid update feed');
+   const appUrl=mcnSafeHttpsUrl(info.url,address);
+   if(!appUrl)throw Error('Invalid update URL');
+   return {version:info.version,url:appUrl,notes:typeof info.notes==='string'?info.notes.slice(0,300):''};
+  }));
+  const valid=results.filter(r=>r.status==='fulfilled').map(r=>r.value).sort((a,b)=>mcnVersionCompare(b.version,a.version));
+  if(!valid.length)throw Error('Both update feeds unavailable');
+  const latest=valid[0],comparison=mcnVersionCompare(latest.version,MCN_WEB_VERSION);
+  mcnUpdateState={type:comparison>0?'available':'current',latest:comparison>0?latest:null,lastChecked:Date.now(),checking:false};
+ }catch(error){
+  console.warn('Creative Notes update check:',error);
+  mcnUpdateState={type:'error',latest:null,lastChecked:Date.now(),checking:false};
+ }finally{clearTimeout(timeout);mcnRefreshUpdateDisplay()}
 }
 function mcnUpdateButtonClick(){
  if(mcnUpdateState.checking)return;

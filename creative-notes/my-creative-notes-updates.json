@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8: import notes without replacing existing tabs, improved Settings name editing, hide and reopen sidebar."
+  "notes": "Version 8.0.1: simplified Settings by removing the Webpage Edition explanation and the redundant syncing sentence."
 }

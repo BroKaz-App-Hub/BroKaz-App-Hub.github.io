@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.3: App Access in Settings with Windows taskbar and phone Home Screen shortcut instructions."
+  "notes": "Version 8.0.4: App Access now requests browser installation when supported, with taskbar and Home Screen instructions as a fallback."
 }

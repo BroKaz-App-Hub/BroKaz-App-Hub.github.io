@@ -167,7 +167,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.8</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.9</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -1092,7 +1092,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.8';
+const MCN_WEB_VERSION='8.0.9';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};
@@ -1168,17 +1168,49 @@ function mcnShowUpdateDialog(){
  closeSettings();el('mcnUpdateOverlay').classList.remove('hidden');el('mcnOpenUpdateButton').focus();
 }
 function mcnHideUpdateDialog(){el('mcnUpdateOverlay').classList.add('hidden')}
-function mcnOpenNewVersion(){
+async function mcnOpenNewVersion(){
  if(!mcnUpdateState.latest)return;
  if(editing){alert('Save or cancel your note edit before opening an update.');return}
- const version=mcnUpdateState.latest.version;
+ const {version}=mcnUpdateState.latest;
  const url=new URL(mcnUpdateState.latest.url,window.location.href);
- // A versioned navigation ensures Chromium reloads the updated app even when the URL is otherwise identical.
- url.searchParams.set('mcn_version',version);
- url.searchParams.set('mcn_refresh',String(Date.now()));
- mcnHideUpdateDialog();
- window.location.replace(url.href);
+ if(url.origin!==location.origin){alert('Update address does not match this app website.');return}
+ const btn=el('mcnOpenUpdateButton');
+ btn.disabled=true;btn.textContent='Loading update…';
+ try{
+  // GitHub Pages may not have deployed the release yet even when the feed has updated.
+  // Confirm the page itself contains the expected release before leaving this window.
+  const check=new URL(url.href);check.searchParams.set('mcn_preflight',String(Date.now()));
+  const response=await fetch(check.href,{cache:'no-store'});
+  if(!response.ok)throw Error('Website returned '+response.status);
+  const html=await response.text();
+  const detected=html.match(/const MCN_WEB_VERSION='(\\d+\\.\\d+\\.\\d+)'/);
+  if(!detected||mcnVersionCompare(detected[1],version)<0){
+   alert('The new version has been announced, but the website is still publishing it. Please try Get update again in a minute.');
+   return;
+  }
+  url.searchParams.set('mcn_version',version);
+  url.searchParams.set('mcn_refresh',String(Date.now()));
+  window.location.replace(url.href);
+ }catch(error){
+  console.warn('Could not load published update:',error);
+  alert('Could not verify the updated website. Please check your connection and try again.');
+ }finally{btn.disabled=false;btn.textContent='Get update ↗'}
 }
+function mcnVerifyLoadedUpdate(){
+ const params=new URLSearchParams(location.search),expected=params.get('mcn_version');
+ if(!expected||mcnVersionCompare(expected,MCN_WEB_VERSION)!==1)return;
+ const key='mcn_update_retry_'+expected;
+ let attempts=0;
+ try{attempts=Number(sessionStorage.getItem(key)||'0')}catch(e){}
+ if(attempts<2){
+  try{sessionStorage.setItem(key,String(attempts+1))}catch(e){}
+  const url=new URL(location.href);url.searchParams.set('mcn_refresh',String(Date.now()));
+  window.location.replace(url.href);
+ }else{
+  setTimeout(()=>alert('The updated page has not finished publishing. This window is still running Web v'+MCN_WEB_VERSION+'. Please try Update again shortly.'),400);
+ }
+}
+mcnVerifyLoadedUpdate();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!el('mcnUpdateOverlay').classList.contains('hidden'))mcnHideUpdateDialog();if(!el('mcnReceiveOverlay').classList.contains('hidden'))closeReceiveNotes()}});
 
 // Don't overwrite shared notes merely because another window opens.

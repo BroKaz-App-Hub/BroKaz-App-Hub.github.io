@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 6: Share My Notes and Receive My Notes for transferring notes between devices."
+  "notes": "Version 7: shorter backup confirmations and Import My Notes to combine tabs."
 }

@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.2: updates open in the same browser tab; blue means up to date and green means an update is available."
+  "notes": "Version 8.0.3: App Access in Settings with Windows taskbar and phone Home Screen shortcut instructions."
 }

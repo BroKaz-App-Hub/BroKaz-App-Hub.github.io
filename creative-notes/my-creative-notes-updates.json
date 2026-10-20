@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.11",
+  "version": "8.0.12",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.11: installed app has updated Open in Chrome wording; browser tabs show a non-clickable Already Open in Browser status."
+  "notes": "Version 8.0.12: simplified App Access by removing Open in Chrome and Already Open in Browser."
 }

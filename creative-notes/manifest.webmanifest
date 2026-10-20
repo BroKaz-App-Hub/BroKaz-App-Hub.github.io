@@ -1,0 +1,18 @@
+{
+  "id": "/creative-notes/",
+  "name": "My Creative Notes",
+  "short_name": "Creative Notes",
+  "start_url": "/creative-notes/",
+  "scope": "/creative-notes/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2674b7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

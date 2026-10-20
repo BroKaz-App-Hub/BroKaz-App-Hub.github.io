@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.14",
+  "version": "8.0.15",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.14: experimental Switch View in Settings with confirmation, unsaved-edit safeguard and browser-permission-aware window handling."
+  "notes": "Version 8.0.15: App Access now has one Switch View button, with installation prompts and safe browser/app guidance."
 }

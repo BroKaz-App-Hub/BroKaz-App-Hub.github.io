@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.6",
+  "version": "8.0.7",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.6: Open in Browser option under App Access for installed app users."
+  "notes": "Version 8.0.7: update checks compare published and repository feeds; top three-bar button opens or closes the sidebar."
 }

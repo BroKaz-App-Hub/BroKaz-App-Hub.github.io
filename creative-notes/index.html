@@ -137,7 +137,7 @@
 .mcnUpdateSafety{background:#f2f7fd;border:1px solid #d7e7f4;padding:11px;border-radius:10px}
 .mcnUpdateDialogActions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:15px}
 @media(max-width:520px){.mcnUpdateDialogActions{display:grid;grid-template-columns:1fr}.mcnUpdateDialogActions .btn{width:100%}}
-</style><style id="mcnReceiveStyles">.mcnReceiveOverlay{position:fixed;inset:0;z-index:99990;background:rgba(10,24,36,.70);display:grid;place-items:center;padding:16px}.mcnReceiveOverlay.hidden{display:none}.mcnReceiveDialog{background:#fff;color:#203449;border-radius:16px;max-width:440px;width:100%;max-height:90dvh;overflow:auto;padding:22px;box-shadow:0 12px 50px #0005}.mcnReceiveDialog h2{margin:0 0 10px;font-size:1.4rem}.mcnReceiveDialog p{font-size:.89rem;line-height:1.5;margin:8px 0 15px}.mcnReceiveDialog .btn{display:block;margin-top:12px;width:100%;white-space:normal}</style></head><body>
+</style><style id="mcnReceiveStyles">.mcnReceiveOverlay{position:fixed;inset:0;z-index:99990;background:rgba(10,24,36,.70);display:grid;place-items:center;padding:16px}.mcnReceiveOverlay.hidden{display:none}.mcnReceiveDialog{background:#fff;color:#203449;border-radius:16px;max-width:440px;width:100%;max-height:90dvh;overflow:auto;padding:22px;box-shadow:0 12px 50px #0005}.mcnReceiveDialog h2{margin:0 0 10px;font-size:1.4rem}.mcnReceiveDialog p{font-size:.89rem;line-height:1.5;margin:8px 0 15px}.mcnReceiveDialog .btn{display:block;margin-top:12px;width:100%;white-space:normal}</style><style id="mcnV7Styles">.mcnConfirmActions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.mcnConfirmActions .btn{width:auto;min-width:95px;margin:0}.mcnReceiveDialog{max-width:460px}.mcnReceiveDialog .btn:focus-visible{outline:3px solid #2674b7;outline-offset:2px}</style></head><body>
 <div class="shell"><aside class="sidebar" id="sidebar"><div class="brand"><div class="brandRow" id="guideBrandName"><div class="brandIcon" aria-hidden="true">📚</div><div class="brandOwner" id="guideBrandOwner">My</div></div><div class="brandRest">Creative Notes</div><div class="sub">Your information, easy to find</div></div><nav id="nav" class="nav"></nav><div class="sidebottom"><button type="button" class="sidebarClose" onclick="closeSidebar()" aria-label="Close sidebar">✕ Close</button><div class="sub" style="text-align:center">Web preview v2 · Back up your notes</div></div></aside><main class="main"><div class="tabs" id="tabs" role="tablist" aria-label="Creative notes categories"></div><div class="topbar"><button class="btn mobileNav" onclick="toggleSidebar()">☰</button><input id="search" class="search" placeholder="🔎 Search all your information…" aria-label="Search all notes"><div class="topright"><button class="btn" onclick="showHome()">⌂ Home</button><div class="settingsWrap" id="settingsWrap"><button class="btn settingsCog" id="settingsButton" aria-label="Settings" title="Settings" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" onclick="toggleSettings()">⚙</button><div class="settingsMenu hidden" id="settingsMenu" aria-label="Settings"><div class="settingsTitle">⚙ Settings</div><form class="personaliseGuide" onsubmit="saveGuideName();return false"><label for="guideOwnerName">Personalise your guide</label><input id="guideOwnerName" type="text" autocomplete="off" maxlength="16" placeholder=""><div class="settingsNamePreview" id="guideNamePreview">My Creative Notes</div><button class="saveNameButton" type="submit">Save Name</button></form><div class="settingsDivider"></div><div class="settingsSectionLabel" id="mcnThemeHeading">Colour theme</div><div class="mcnThemePicker" id="mcnThemePicker" role="group" aria-labelledby="mcnThemeHeading">
 <button type="button" class="themeOption" data-theme-choice="default" aria-pressed="true" onclick="chooseMcnTheme('default')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Default</span></button>
 <button type="button" class="themeOption" data-theme-choice="blue" aria-pressed="false" onclick="chooseMcnTheme('blue')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Blue</span></button>
@@ -152,13 +152,21 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v6.0.0</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v7.0.0</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Green means current after checking; blue means a new version is available.</div>
 </div>
 <div class="settingsDivider"></div>
-<div class="settingsSectionLabel">Share notes between devices</div><button type="button" class="settingsBackupAction" onclick="shareMyNotes()" title="Share or download your personal notes to transfer to a computer or phone"><span class="settingsBackupIcon" aria-hidden="true">↗</span><span>Share My Notes</span></button><button type="button" class="settingsBackupAction" onclick="receiveMyNotes()" title="Receive personal notes from a file on this device"><span class="settingsBackupIcon" aria-hidden="true">↙</span><span>Receive My Notes</span></button><p class="settingsBackupHelp">Share makes a notes file you can send to another device. Receive lets you merge notes or replace your notes with a transferred file. Changes do not sync automatically.</p><div class="settingsDivider" role="separator" aria-label="Tutorial options"></div><button type="button" class="settingsBackupAction settingsTutorialAction" onclick="startTutorial()" title="Show the guided tour again"><span class="settingsBackupIcon" aria-hidden="true">❔</span><span>Show Tutorial</span></button></div></div></div></div><div class="content" id="scrollArea"><div class="contentInner" id="view"></div></div></main></div><div id="mcnReceiveOverlay" class="mcnReceiveOverlay hidden" role="presentation"><div class="mcnReceiveDialog" role="dialog" aria-modal="true" aria-labelledby="mcnReceiveTitle" aria-describedby="mcnReceiveDesc"><h2 id="mcnReceiveTitle">Receive My Notes</h2><p id="mcnReceiveDesc">How would you like to receive your transferred notes?</p><button class="btn primary" id="mcnReceiveMerge" type="button" onclick="chooseReceiveMode('merge')">Merge with my notes</button><p>Keep your current notes and add notes from the file. Exact matching notes are skipped.</p><button class="btn" type="button" onclick="chooseReceiveMode('restore')">Replace my notes</button><p>Replace this browser's notes with the transferred notes. You'll be asked to confirm first. Save a backup of your current notes before replacing them.</p><button class="btn" type="button" onclick="closeReceiveNotes()">Cancel</button></div></div><input type="file" id="importFile" accept=".json,application/json" class="hidden"><div id="toast" class="toast"></div>
+<div class="settingsSectionLabel">Share notes between devices</div><button type="button" class="settingsBackupAction" onclick="shareMyNotes()" title="Share or download your personal notes to transfer to a computer or phone"><span class="settingsBackupIcon" aria-hidden="true">↗</span><span>Share My Notes</span></button><button type="button" class="settingsBackupAction" onclick="receiveMyNotes()" title="Receive personal notes from a file on this device"><span class="settingsBackupIcon" aria-hidden="true">↙</span><span>Receive My Notes</span></button><p class="settingsBackupHelp">Share makes a notes file you can send to another device. Receive lets you merge notes or replace your notes with a transferred file. Changes do not sync automatically.</p><div class="settingsDivider" role="separator" aria-label="Tutorial options"></div><button type="button" class="settingsBackupAction settingsTutorialAction" onclick="startTutorial()" title="Show the guided tour again"><span class="settingsBackupIcon" aria-hidden="true">❔</span><span>Show Tutorial</span></button></div></div></div></div><div class="content" id="scrollArea"><div class="contentInner" id="view"></div></div></main></div><div id="mcnReceiveOverlay" class="mcnReceiveOverlay hidden" role="presentation"><div class="mcnReceiveDialog" role="dialog" aria-modal="true" aria-labelledby="mcnReceiveTitle" aria-describedby="mcnReceiveDesc">
+<h2 id="mcnReceiveTitle">What would you like to do with your notes?</h2><p id="mcnReceiveDesc">Choose how to use your backup file.</p>
+<button class="btn" type="button" onclick="chooseReceiveMode('restore')">Restore My Notes</button><p>Replace your current notes with the backup.</p>
+<button class="btn primary" id="mcnReceiveMerge" type="button" onclick="chooseReceiveMode('merge')">Import My Notes</button><p>Keep your current tabs and add notes from the backup. Matching tabs are combined.</p>
+<button class="btn" type="button" onclick="closeReceiveNotes()">Cancel</button></div></div>
+<div id="mcnConfirmOverlay" class="mcnReceiveOverlay hidden" role="presentation"><div class="mcnReceiveDialog" role="dialog" aria-modal="true" aria-labelledby="mcnConfirmHeading" aria-describedby="mcnConfirmDesc">
+<h2 id="mcnConfirmHeading">Restore My Notes?</h2><p id="mcnConfirmDesc">Your current notes will be replaced by the backup.</p>
+<div class="mcnConfirmActions"><button class="btn" type="button" onclick="mcnResolveImportConfirmation(false)">Cancel</button><button class="btn primary" id="mcnConfirmYes" type="button" onclick="mcnResolveImportConfirmation(true)">Restore</button></div></div></div>
+<input type="file" id="importFile" accept=".json,application/json" class="hidden"><div id="toast" class="toast"></div>
 <div id="mcnUpdateOverlay" class="mcnUpdateOverlay hidden" role="presentation">
  <div class="mcnUpdateDialog" role="dialog" aria-modal="true" aria-labelledby="mcnUpdateDialogTitle" aria-describedby="mcnUpdateDialogDesc">
    <h2 id="mcnUpdateDialogTitle">A new version is available</h2>
@@ -861,6 +869,23 @@ function receiveMyNotes(){
 }
 function closeReceiveNotes(){document.getElementById('mcnReceiveOverlay').classList.add('hidden')}
 function chooseReceiveMode(mode){closeReceiveNotes();beginBackupImport(mode)}
+let mcnPendingImportConfirmation=null;
+function mcnAskImportConfirmation(mode){
+ return new Promise(resolve=>{
+  mcnPendingImportConfirmation=resolve;
+  const yes=el('mcnConfirmYes');
+  el('mcnConfirmHeading').textContent=mode==='restore'?'Restore My Notes?':'Import My Notes?';
+  el('mcnConfirmDesc').textContent=mode==='restore'?'Your current notes will be replaced by the backup.':'Keep your current tabs and add notes from the backup?';
+  yes.textContent=mode==='restore'?'Restore':'Import';
+  el('mcnConfirmOverlay').classList.remove('hidden');
+  yes.focus();
+ });
+}
+function mcnResolveImportConfirmation(approved){
+ el('mcnConfirmOverlay').classList.add('hidden');
+ const resolve=mcnPendingImportConfirmation;mcnPendingImportConfirmation=null;
+ if(resolve)resolve(Boolean(approved));
+}
 let pendingImportMode=null;
 function beginBackupImport(mode){
  if(mode!=='restore'&&mode!=='merge')return;
@@ -957,27 +982,20 @@ el('importFile').addEventListener('change',async function(){
  try{
   if(file.size>20*1024*1024)throw Error('Please choose a backup smaller than 20 MB.');
   const backup=parseGuideBackup(JSON.parse(await file.text()));
-  const incomingCount=backup.sections.reduce((n,s)=>n+s.cards.length,0);
   if(mode==='restore'){
-   const message='RESTORE BACKUP\n\nThis will REPLACE your current tabs and notes with '+backup.tabs.length+' tab(s) and '+incomingCount+' note(s) from the file.'+
-    (backup.hasOwner?'\nThe personalised Guide name will also be restored.':'')+
-    '\n\nYour current information will be removed. Save a backup of it first if you want to keep it.\n\nContinue?';
-   if(!confirm(message))return;
+   if(!await mcnAskImportConfirmation('restore'))return;
    applyBackup(backup.tabs,backup.sections,backup.owner,backup.hasOwner);
-   toast('Backup restored');
+   toast('Notes restored');
   }else{
    const merged=mergedBackup(backup);
-   const message='IMPORT & MERGE\n\nAdd '+merged.notesAdded+' note(s) and '+merged.tabsAdded+' new tab(s) to your Guide?'+
-    (merged.duplicatesSkipped?'\n'+merged.duplicatesSkipped+' exact duplicate note(s) will be skipped.':'')+
-    '\n\nYour existing notes, tabs and personalised name will stay. Tabs with matching names will be combined.\n\nContinue?';
-   if(!confirm(message))return;
+   if(!await mcnAskImportConfirmation('merge'))return;
    applyBackup(merged.tabs,merged.sections);
-   toast('Merged '+merged.notesAdded+' note(s)');
+   toast('Imported '+merged.notesAdded+' note(s)');
   }
  }catch(error){alert('Unable to '+(mode==='restore'?'restore':'merge')+' backup: '+error.message)}
 });
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='6.0.0';
+const MCN_WEB_VERSION='7.0.0';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};

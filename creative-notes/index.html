@@ -167,7 +167,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.4</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.5</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -1058,9 +1058,8 @@ window.addEventListener('beforeinstallprompt',event=>{
 window.addEventListener('appinstalled',()=>{
  mcnDeferredInstallPrompt=null;
  const guide=el('mcnAppAccessGuide');
- guide.innerHTML='<strong>App installed!</strong><p>On Windows, right-click the app icon on your taskbar and choose <strong>Pin to taskbar</strong> if it is not already pinned.</p>';
- guide.classList.remove('hidden');
- el('mcnAppAccessButton').setAttribute('aria-expanded','true');
+ guide.classList.add('hidden');
+ el('mcnAppAccessButton').setAttribute('aria-expanded','false');
 });
 async function mcnInstallApp(){
  const guide=el('mcnAppAccessGuide'),button=el('mcnAppAccessButton');
@@ -1073,6 +1072,12 @@ async function mcnInstallApp(){
    if(result?.outcome==='accepted')return;
   }catch(error){console.warn('App install prompt unavailable',error)}
  }
+ if(mcnAppAccessDevice()==='windows'){
+  guide.classList.add('hidden');
+  button.setAttribute('aria-expanded','false');
+  if(typeof toast==='function')toast('Use Chrome or Edge install options if no prompt appears.');
+  return;
+ }
  guide.classList.remove('hidden');
  button.setAttribute('aria-expanded','true');
 }
@@ -1081,7 +1086,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.4';
+const MCN_WEB_VERSION='8.0.5';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};

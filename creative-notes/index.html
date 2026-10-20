@@ -167,7 +167,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.7</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.8</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -1092,7 +1092,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.7';
+const MCN_WEB_VERSION='8.0.8';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};
@@ -1171,10 +1171,13 @@ function mcnHideUpdateDialog(){el('mcnUpdateOverlay').classList.add('hidden')}
 function mcnOpenNewVersion(){
  if(!mcnUpdateState.latest)return;
  if(editing){alert('Save or cancel your note edit before opening an update.');return}
- const url=mcnUpdateState.latest.url;
+ const version=mcnUpdateState.latest.version;
+ const url=new URL(mcnUpdateState.latest.url,window.location.href);
+ // A versioned navigation ensures Chromium reloads the updated app even when the URL is otherwise identical.
+ url.searchParams.set('mcn_version',version);
+ url.searchParams.set('mcn_refresh',String(Date.now()));
  mcnHideUpdateDialog();
- // User has explicitly chosen to open a website update; never auto-install an EXE.
- window.location.assign(url);
+ window.location.replace(url.href);
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!el('mcnUpdateOverlay').classList.contains('hidden'))mcnHideUpdateDialog();if(!el('mcnReceiveOverlay').classList.contains('hidden'))closeReceiveNotes()}});
 

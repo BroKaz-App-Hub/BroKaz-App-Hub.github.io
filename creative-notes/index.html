@@ -116,10 +116,10 @@
 .mcnUpdateStatus.isError{color:#8c4e24}
 .settingsMenu button.mcnUpdateButton{display:block;background:#2674b7;border:1px solid #2674b7;color:white;border-radius:9px;text-align:center;padding:11px 8px;font-weight:700;margin:10px 0;width:100%;transition:background .18s ease,box-shadow .18s ease}
 .settingsMenu button.mcnUpdateButton:hover{background:#205f98;color:white}
-.settingsMenu button.mcnUpdateButton.isAvailable{background:#2674b7;border-color:#2674b7;color:#fff;box-shadow:0 0 0 2px #2674b722}
-.settingsMenu button.mcnUpdateButton.isAvailable:hover{background:#205f98;color:white}
-.settingsMenu button.mcnUpdateButton.isCurrent{background:#16834c;border-color:#087543;color:white}
-.settingsMenu button.mcnUpdateButton.isCurrent:hover{background:#0c6e3b;color:white}
+.settingsMenu button.mcnUpdateButton.isAvailable{background:#16834c;border-color:#087543;color:#fff;box-shadow:0 0 0 2px #16834c22}
+.settingsMenu button.mcnUpdateButton.isAvailable:hover{background:#0c6e3b;color:white}
+.settingsMenu button.mcnUpdateButton.isCurrent{background:#2674b7;border-color:#2674b7;color:white}
+.settingsMenu button.mcnUpdateButton.isCurrent:hover{background:#205f98;color:white}
 .settingsMenu button.mcnUpdateButton:not(.isCurrent):not(.isAvailable){background:transparent;border:1px solid currentColor;color:inherit}
 .settingsMenu button.mcnUpdateButton:disabled{opacity:.65;cursor:wait}
 .mcnUpdateInfo{font-size:11px;line-height:1.5;color:#566f84}
@@ -162,10 +162,10 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.1</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.2</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
-  <div class="mcnUpdateInfo">Manual check only. Green means current after checking; blue means a new version is available.</div>
+  <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
 </div>
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel">Share notes between devices</div><button type="button" class="settingsBackupAction" onclick="shareMyNotes()" title="Share or download your personal notes to transfer to a computer or phone"><span class="settingsBackupIcon" aria-hidden="true">↗</span><span>Share My Notes</span></button><button type="button" class="settingsBackupAction" onclick="receiveMyNotes()" title="Receive personal notes from a file on this device"><span class="settingsBackupIcon" aria-hidden="true">↙</span><span>Receive My Notes</span></button><p class="settingsBackupHelp">Share makes a notes file you can send to another device. Receive imports notes without deleting your existing tabs or notes.</p><div class="settingsDivider" role="separator" aria-label="Tutorial options"></div><button type="button" class="settingsBackupAction settingsTutorialAction" onclick="startTutorial()" title="Show the guided tour again"><span class="settingsBackupIcon" aria-hidden="true">❔</span><span>Show Tutorial</span></button></div></div></div></div><div class="content" id="scrollArea"><div class="contentInner" id="view"></div></div></main></div><div id="mcnReceiveOverlay" class="mcnReceiveOverlay hidden" role="presentation"><div class="mcnReceiveDialog" role="dialog" aria-modal="true" aria-labelledby="mcnReceiveTitle" aria-describedby="mcnReceiveDesc"><h2 id="mcnReceiveTitle">Import My Notes</h2><p id="mcnReceiveDesc">Keep your current tabs and notes. Matching tabs will be combined and exact duplicates skipped.</p><button class="btn primary" id="mcnReceiveMerge" type="button" onclick="chooseReceiveMode('merge')">Import My Notes</button><button class="btn" type="button" onclick="closeReceiveNotes()">Cancel</button></div></div>
@@ -1022,7 +1022,7 @@ el('importFile').addEventListener('change',async function(){
  }catch(error){alert('Unable to '+(mode==='restore'?'restore':'merge')+' backup: '+error.message)}
 });
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.1';
+const MCN_WEB_VERSION='8.0.2';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};
@@ -1095,8 +1095,7 @@ function mcnOpenNewVersion(){
  const url=mcnUpdateState.latest.url;
  mcnHideUpdateDialog();
  // User has explicitly chosen to open a website update; never auto-install an EXE.
- const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';
- document.body.appendChild(link);link.click();link.remove();
+ window.location.assign(url);
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!el('mcnUpdateOverlay').classList.contains('hidden'))mcnHideUpdateDialog();if(!el('mcnReceiveOverlay').classList.contains('hidden'))closeReceiveNotes()}});
 

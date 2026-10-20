@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.8",
+  "version": "8.0.9",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.8: Get update forces a fresh load in the same window, including the installed Chrome app."
+  "notes": "Version 8.0.9: verify the published app version before opening an update and retry stale loads in both browser tabs and installed app windows."
 }

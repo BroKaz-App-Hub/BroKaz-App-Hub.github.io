@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.9",
+  "version": "8.0.10",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.9: verify the published app version before opening an update and retry stale loads in both browser tabs and installed app windows."
+  "notes": "Version 8.0.10: Open in Chrome guidance appears only in the installed app, avoiding extra app windows from Open in Browser."
 }

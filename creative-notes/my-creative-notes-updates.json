@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.16",
+  "version": "8.0.17",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.16: Fixed note saving so pasted and typed line breaks, paragraphs and lists stay on separate lines. Existing notes and settings are retained."
+  "notes": "Version 8.0.17: The sidebar now stays open while switching tabs or sections. Use Hide Sidebar to close it manually, and the menu button to reopen it. Existing notes and settings are retained."
 }

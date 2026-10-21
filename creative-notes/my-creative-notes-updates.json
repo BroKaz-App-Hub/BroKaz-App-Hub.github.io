@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.15",
+  "version": "8.0.16",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.15: App Access now has one Switch View button, with installation prompts and safe browser/app guidance."
+  "notes": "Version 8.0.16: Fixed note saving so pasted and typed line breaks, paragraphs and lists stay on separate lines. Existing notes and settings are retained."
 }

@@ -72,6 +72,16 @@
 .tabEditorIconChoice:hover{background:#e0f0ff;border-color:#83b3dc}
 .tabEditorIconChoice.selected{background:#d4eaff;border-color:#1e6caf;outline:2px solid #1e6caf;outline-offset:0}
 .tabEditorFooter{display:flex;gap:9px;align-items:center;justify-content:flex-end;padding-top:8px;border-top:1px solid #e5edf4}
+.tabEditorDelete{margin-right:auto;color:#a03945;background:#fff6f6;border-color:#e2b6ba;white-space:nowrap}
+.tabEditorDelete:hover,.tabEditorDelete:focus-visible{background:#fee8e9;border-color:#bd7b84}
+.navSectionRow{display:flex;align-items:center;gap:3px;margin:2px 0;min-width:0}
+.navSectionRow .navbtn{flex:1;width:auto;min-width:0;margin:0}
+.navSectionRow .navbtn span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.navSectionDelete{flex:0 0 30px;width:30px;min-height:34px;padding:4px 2px;background:transparent;border:1px solid transparent;border-radius:8px;color:#ffd7dc;font-size:16px;opacity:.65}
+.navSectionDelete:hover,.navSectionDelete:focus-visible{color:white;background:#a33d4c;border-color:#e0a1aa;opacity:1}
+.navSectionRow:focus-within .navSectionDelete,.navSectionRow:hover .navSectionDelete{opacity:1}
+@media(max-width:600px){.tabEditorFooter{flex-wrap:wrap}.tabEditorDelete{margin-right:auto}}
+
 .tabEditorError{min-height:0;margin:0;color:#a32e40;font-size:13px;font-weight:600}
 @media(max-width:600px){.tabEditorPanel{padding:13px;max-height:95dvh}.tabEditorIconGrid{max-height:32dvh;min-height:110px}.tabEditorHeader h3{font-size:18px}}
 
@@ -167,7 +177,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.18</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.19</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -208,7 +218,7 @@
    <input id="tabEditorIconSearch" class="tabEditorIconSearch" type="search" placeholder="Search: book, home, dog, work…" oninput="renderTabEditorIcons()">
    <div id="tabEditorIconGrid" class="tabEditorIconGrid" role="group" aria-label="Available tab icons"></div>
    <p class="tabEditorError" id="tabEditorError" role="alert"></p>
-   <div class="tabEditorFooter"><button type="button" class="btn" onclick="closeTabEditor()">Cancel</button><button class="btn primary" type="submit" id="tabEditorSave">Create Tab</button></div>
+   <div class="tabEditorFooter"><button type="button" id="tabEditorDelete" class="btn tabEditorDelete hidden" onclick="deleteTabFromEditor()" aria-label="Delete this tab and all its notes">🗑 Delete Tab</button><button type="button" class="btn" onclick="closeTabEditor()">Cancel</button><button class="btn primary" type="submit" id="tabEditorSave">Create Tab</button></div>
   </form>
  </div>
 </div>
@@ -537,6 +547,7 @@ function openTabEditor(id=null){
  tabEditorIcon=parts.icon;
  el('tabEditorTitle').textContent=tab?'Edit Tab':'New Tab';
  el('tabEditorSave').textContent=tab?'Save Changes':'Create Tab';
+ el('tabEditorDelete').classList.toggle('hidden',!tab);
  el('tabEditorName').value=parts.label;
  el('tabEditorIconSearch').value='';el('tabEditorError').textContent='';
  el('tabEditorOverlay').classList.remove('hidden');
@@ -548,6 +559,27 @@ function closeTabEditor(){
  tabEditorId=null;
  const target=tabEditorPreviousFocus;tabEditorPreviousFocus=null;
  if(target?.isConnected)target.focus();
+}
+function deleteTabFromEditor(){
+ const id=tabEditorId,tab=tabs.find(t=>t.id===id);
+ if(!tab)return;
+ const noteCount=tabNoteCount(id),sectionCount=sections.filter(s=>s.tab===id).length;
+ const question='Delete the tab “'+tabParts(tab).label+'” and all its contents?'+
+   '\n\nThis will remove '+noteCount+' '+(noteCount===1?'note':'notes')+' and '+sectionCount+' '+(sectionCount===1?'section':'sections')+'.'+
+   '\nYour other tabs will stay unchanged. Save a backup first if you need these notes.';
+ if(!confirm(question))return;
+ const remainingTabs=tabs.filter(t=>t.id!==id);
+ const remainingSections=sections.filter(s=>s.tab!==id);
+ try{
+  webGuardSave();
+  localStorage.setItem(TAB_KEY,JSON.stringify(remainingTabs));
+  localStorage.setItem(KEY,JSON.stringify(remainingSections));
+ }catch(error){alert('Could not delete the tab safely: '+error.message);return}
+ tabs=remainingTabs;sections=remainingSections;
+ if(activeTab===id)activeTab=tabs[0]?.id||'home';
+ if(!sections.some(s=>s.id===selected&&s.tab===activeTab))selected=sections.find(s=>s.tab===activeTab)?.id||'home';
+ editing=null;draftNoteId=null;draftSectionId=null;searchText='';el('search').value='';
+ recordHistory();saveNav();closeTabEditor();render();el('scrollArea').scrollTop=0;toast('Tab deleted');
 }
 function updateTabEditorPreview(){
  el('tabEditorPreviewIcon').textContent=tabEditorIcon;
@@ -716,7 +748,7 @@ function toggleSidebar(){mcnSetSidebarHidden(!mcnSidebarHidden)}
 function closeSidebar(){mcnSetSidebarHidden(true)}
 mcnSetSidebarHidden(mcnSidebarHidden);
 function select(id){if(id!=='home'&&!sections.some(s=>s.id===id&&s.tab===activeTab))return;selected=id;saveNav();editing=null;searchText='';el('search').value='';render();el('scrollArea').scrollTop=0}function showHome(){select(sections.find(s=>s.tab===activeTab)?.id||'home')}
-function renderNav(){el('nav').innerHTML=sections.filter(s=>s.tab===activeTab).map(s=>`<button draggable="true" data-section-id="${s.id}" title="Drag to reorder this section, or drag onto a top tab to move it. Alt+Up/Down to reorder." ondragstart="startSectionDrag(event,'${s.id}')" ondragover="sectionDragOver(event,'${s.id}')" ondragleave="sectionDragLeave(event)" ondrop="dropOnSection(event,'${s.id}')" ondragend="finishDrag()" onkeydown="moveSectionWithKeyboard(event,'${s.id}')" class="navbtn ${s.id===selected?'active':''}" onclick="clickSidebar(event,'${s.id}')"><span>${escapeHtml(s.icon)}</span><span>${escapeHtml(s.title)}</span></button>`).join('')||(tabs.length?'<p class="sub" style="padding:12px">No sidebar sections yet. Select Add Note to start.</p>':'<p class="sub" style="padding:12px">Create a new tab to begin.</p>')}
+function renderNav(){el('nav').innerHTML=sections.filter(s=>s.tab===activeTab).map(s=>`<div class="navSectionRow"><button draggable="true" data-section-id="${s.id}" title="Drag to reorder this section, or drag onto a top tab to move it. Alt+Up/Down to reorder." ondragstart="startSectionDrag(event,'${s.id}')" ondragover="sectionDragOver(event,'${s.id}')" ondragleave="sectionDragLeave(event)" ondrop="dropOnSection(event,'${s.id}')" ondragend="finishDrag()" onkeydown="moveSectionWithKeyboard(event,'${s.id}')" class="navbtn ${s.id===selected?'active':''}" onclick="clickSidebar(event,'${s.id}')"><span>${escapeHtml(s.icon)}</span><span>${escapeHtml(s.title)}</span></button><button type="button" class="navSectionDelete" title="Delete section ${escapeHtml(s.title)}" aria-label="Delete section ${escapeHtml(s.title)}" onclick="event.stopPropagation();deleteSection(&quot;${s.id}&quot;)">🗑</button></div>`).join('')||(tabs.length?'<p class="sub" style="padding:12px">No sidebar sections yet. Select Add Note to start.</p>':'<p class="sub" style="padding:12px">Create a new tab to begin.</p>')}
 function renderBody(src){
  if(typeof src==='string'&&src.startsWith(MCN_RICH_PREFIX))return mcnSanitize(src.slice(MCN_RICH_PREFIX.length));
  const lines=src.split(/\r?\n/),out=[];let mode='',items=[];
@@ -866,7 +898,20 @@ function deleteCard(sid,cid){if(!confirm('Delete this note?'))return;const s=sec
 function addSection(){const title=prompt('Name of your new section:');if(!title?.trim())return;const s={id:'s'+Date.now(),title:title.trim(),icon:'📁',tab:activeTab,cards:[]};sections.push(s);save();select(s.id);toast('Section created')}
 function renameSection(id){const s=sections.find(x=>x.id===id);if(!s)return;const title=prompt('Section name:',s.title);if(!title?.trim())return;s.title=title.trim();save();render()}
 function deleteCurrentSection(){if(selected==='home'||!sections.some(s=>s.id===selected)){toast('Choose a section first');return}deleteSection(selected)}
-function deleteSection(id){const s=sections.find(x=>x.id===id);if(!s||!confirm(`Delete “${s.title}” and all its notes? Export a backup first if needed.`))return;sections=sections.filter(x=>x.id!==id);save();select('home')}
+function deleteSection(id){
+ const section=sections.find(s=>s.id===id);if(!section)return;
+ const count=section.cards.length;
+ const question='Delete the section “'+section.title+'” and all its notes?'+
+   '\n\n'+count+' '+(count===1?'note':'notes')+' will be deleted. Other sections will stay unchanged.'+
+   '\nSave a backup first if you need these notes.';
+ if(!confirm(question))return;
+ const remaining=sections.filter(s=>s.id!==id);
+ try{webGuardSave();localStorage.setItem(KEY,JSON.stringify(remaining))}
+ catch(error){alert('Could not delete this section safely: '+error.message);return}
+ sections=remaining;recordHistory();
+ if(selected===id){selected='home';editing=null;draftNoteId=null;draftSectionId=null;searchText='';el('search').value=''}
+ saveNav();render();toast('Section deleted');
+}
 async function copyNote(sid,cid){const c=sections.find(s=>s.id===sid)?.cards.find(c=>c.id===cid);if(!c)return;try{await navigator.clipboard.writeText(c.title+'\n\n'+mcnPlainText(c.body));toast('Copied')}catch(e){const t=document.createElement('textarea');t.value=c.title+'\n\n'+mcnPlainText(c.body);document.body.append(t);t.select();document.execCommand('copy');t.remove();toast('Copied')}}
 function closeSettings(){el('settingsMenu').classList.add('hidden');el('settingsButton').setAttribute('aria-expanded','false')}
 function toggleSettings(){const menu=el('settingsMenu');const opening=menu.classList.contains('hidden');menu.classList.toggle('hidden',!opening);el('settingsButton').setAttribute('aria-expanded',String(opening));if(opening){el('guideOwnerName').value=guideOwner;applyGuideBrand();mcnRefreshUpdateDisplay();nextTourStep(0,1)}}
@@ -1117,7 +1162,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.18';
+const MCN_WEB_VERSION='8.0.19';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};

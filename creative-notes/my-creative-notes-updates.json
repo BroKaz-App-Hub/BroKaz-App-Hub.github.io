@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.20",
+  "version": "8.0.21",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Web v8.0.20: The Delete Section button now sits at the bottom-left of the main section view, below its last note. Removed sidebar trash icons. Each saved note has a red Delete Note button at the bottom-left when editing, alongside Cancel and Save Changes, replacing the X at the top. All deletions require confirmation."
+  "notes": "Simplified the update popup to its heading, a short backup reminder and the three existing buttons. No change to existing notes or update behaviour."
 }

@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.29",
+  "version": "8.0.30",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Every colour theme now outlines its selected sidebar section. Tab name and Note name are independent fields: an optional named note is created inside a Notes section. The Update button stays solid on hover."
+  "notes": "Added eight new colour themes: Slate Grey, Charcoal Grey, Forest Green, Sage Green, Burgundy, Midnight Navy, Chocolate Brown and Golden Sand. All existing themes remain available, with selected-section borders, and saved notes are unchanged."
 }

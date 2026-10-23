@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.22",
+  "version": "8.0.23",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "The Delete Tab confirmation now shows just one short question, with OK and Cancel. No change to how tabs or notes are saved."
+  "notes": "Removed the large Hide Sidebar button. The three-line menu now opens and closes the sidebar, including on smaller screens. Existing notes and sidebar preferences are preserved."
 }

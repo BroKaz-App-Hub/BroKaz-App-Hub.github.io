@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.21",
+  "version": "8.0.22",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Simplified the update popup to its heading, a short backup reminder and the three existing buttons. No change to existing notes or update behaviour."
+  "notes": "The Delete Tab confirmation now shows just one short question, with OK and Cancel. No change to how tabs or notes are saved."
 }

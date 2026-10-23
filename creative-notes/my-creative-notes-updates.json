@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.18",
+  "version": "8.0.19",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.18: Removed Switch View from Settings and clarified notes transfer as Export My Notes and Import My Notes. Import preserves existing tabs and notes. Existing saved notes and settings remain unchanged."
+  "notes": "Web v8.0.19: Delete Tab is now at the bottom-left of Edit Tab; each sidebar section has a rubbish-bin button. Both deletions ask for confirmation, and other tabs and sections are preserved. Notes still save in the same browser storage."
 }

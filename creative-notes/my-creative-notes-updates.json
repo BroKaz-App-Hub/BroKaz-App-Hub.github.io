@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.26",
+  "version": "8.0.27",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Removed the icon search box from New/Edit Tab. Tab name and Note name now appear inside their empty text fields instead of above them. Existing saved tabs and notes are unchanged."
+  "notes": "Blue and Teal themes now have more prominent sidebar section buttons, with clearer selected and unselected states. Other themes, saved tabs, and notes remain unchanged."
 }

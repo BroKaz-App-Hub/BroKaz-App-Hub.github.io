@@ -74,12 +74,12 @@
 .tabEditorFooter{display:flex;gap:9px;align-items:center;justify-content:flex-end;padding-top:8px;border-top:1px solid #e5edf4}
 .tabEditorDelete{margin-right:auto;color:#a03945;background:#fff6f6;border-color:#e2b6ba;white-space:nowrap}
 .tabEditorDelete:hover,.tabEditorDelete:focus-visible{background:#fee8e9;border-color:#bd7b84}
-.navSectionRow{display:flex;align-items:center;gap:3px;margin:2px 0;min-width:0}
-.navSectionRow .navbtn{flex:1;width:auto;min-width:0;margin:0}
-.navSectionRow .navbtn span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.navSectionDelete{flex:0 0 30px;width:30px;min-height:34px;padding:4px 2px;background:transparent;border:1px solid transparent;border-radius:8px;color:#ffd7dc;font-size:16px;opacity:.65}
-.navSectionDelete:hover,.navSectionDelete:focus-visible{color:white;background:#a33d4c;border-color:#e0a1aa;opacity:1}
-.navSectionRow:focus-within .navSectionDelete,.navSectionRow:hover .navSectionDelete{opacity:1}
+.sectionDeleteBottom{display:flex;justify-content:flex-start;margin:22px 0 28px;padding-top:15px;border-top:1px solid #e5edf4}
+.sectionDeleteBottom .btn{color:#a03945;background:#fff6f6;border:1px solid #e2b6ba}
+.sectionDeleteBottom .btn:hover,.sectionDeleteBottom .btn:focus-visible{background:#fee8e9;border-color:#bd7b84}
+.editRow .noteEditorDelete{margin-right:auto;white-space:nowrap}
+.editRow .noteEditorDelete:hover,.editRow .noteEditorDelete:focus-visible{background:#fee8e9;border-color:#bd7b84}
+@media(max-width:520px){.editRow{flex-wrap:wrap}.editRow .noteEditorDelete{margin-right:auto}}
 @media(max-width:600px){.tabEditorFooter{flex-wrap:wrap}.tabEditorDelete{margin-right:auto}}
 
 .tabEditorError{min-height:0;margin:0;color:#a32e40;font-size:13px;font-weight:600}
@@ -177,7 +177,7 @@
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.19</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.20</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -748,7 +748,7 @@ function toggleSidebar(){mcnSetSidebarHidden(!mcnSidebarHidden)}
 function closeSidebar(){mcnSetSidebarHidden(true)}
 mcnSetSidebarHidden(mcnSidebarHidden);
 function select(id){if(id!=='home'&&!sections.some(s=>s.id===id&&s.tab===activeTab))return;selected=id;saveNav();editing=null;searchText='';el('search').value='';render();el('scrollArea').scrollTop=0}function showHome(){select(sections.find(s=>s.tab===activeTab)?.id||'home')}
-function renderNav(){el('nav').innerHTML=sections.filter(s=>s.tab===activeTab).map(s=>`<div class="navSectionRow"><button draggable="true" data-section-id="${s.id}" title="Drag to reorder this section, or drag onto a top tab to move it. Alt+Up/Down to reorder." ondragstart="startSectionDrag(event,'${s.id}')" ondragover="sectionDragOver(event,'${s.id}')" ondragleave="sectionDragLeave(event)" ondrop="dropOnSection(event,'${s.id}')" ondragend="finishDrag()" onkeydown="moveSectionWithKeyboard(event,'${s.id}')" class="navbtn ${s.id===selected?'active':''}" onclick="clickSidebar(event,'${s.id}')"><span>${escapeHtml(s.icon)}</span><span>${escapeHtml(s.title)}</span></button><button type="button" class="navSectionDelete" title="Delete section ${escapeHtml(s.title)}" aria-label="Delete section ${escapeHtml(s.title)}" onclick="event.stopPropagation();deleteSection(&quot;${s.id}&quot;)">🗑</button></div>`).join('')||(tabs.length?'<p class="sub" style="padding:12px">No sidebar sections yet. Select Add Note to start.</p>':'<p class="sub" style="padding:12px">Create a new tab to begin.</p>')}
+function renderNav(){el('nav').innerHTML=sections.filter(s=>s.tab===activeTab).map(s=>`<button draggable="true" data-section-id="${s.id}" title="Drag to reorder this section, or drag onto a top tab to move it. Alt+Up/Down to reorder." ondragstart="startSectionDrag(event,'${s.id}')" ondragover="sectionDragOver(event,'${s.id}')" ondragleave="sectionDragLeave(event)" ondrop="dropOnSection(event,'${s.id}')" ondragend="finishDrag()" onkeydown="moveSectionWithKeyboard(event,'${s.id}')" class="navbtn ${s.id===selected?'active':''}" onclick="clickSidebar(event,'${s.id}')"><span>${escapeHtml(s.icon)}</span><span>${escapeHtml(s.title)}</span></button>`).join('')||(tabs.length?'<p class="sub" style="padding:12px">No sidebar sections yet. Select Add Note to start.</p>':'<p class="sub" style="padding:12px">Create a new tab to begin.</p>')}
 function renderBody(src){
  if(typeof src==='string'&&src.startsWith(MCN_RICH_PREFIX))return mcnSanitize(src.slice(MCN_RICH_PREFIX.length));
  const lines=src.split(/\r?\n/),out=[];let mode='',items=[];
@@ -822,7 +822,7 @@ function noteUndo(){captureNoteChange();if(!notePast.length)return;const previou
 function noteRedo(){captureNoteChange();if(!noteFuture.length)return;const next=noteFuture.pop();notePast.push(noteCurrent);applyNoteState(next)}
 document.addEventListener('input',e=>{if(editing&&(e.target?.id==='ctitle'||e.target?.id==='cbody'))captureNoteChange()});
 function insertList(kind){const area=el('cbody');if(!area)return;beforeNoteAction();mcnRestoreSelection();area.focus();document.execCommand(kind==='bullet'?'insertUnorderedList':'insertOrderedList',false);afterNoteAction()}
-function cardHtml(c,section){const isEditing=editing===c.id;return `<article class="card" id="${escapeHtml(c.id)}"><div class="cardHead"><h3>${escapeHtml(c.title)}</h3><div class="cardActions"><button class="small" onclick="editCard('${c.id}')">✎ Edit</button><button class="small danger" onclick="deleteCard('${section.id}','${c.id}')" title="Delete">×</button></div></div>${isEditing?`<div class="editPanel"><label>Heading <input class="editTitle" id="ctitle" value="${escapeHtml(c.title)}"></label><label>Information<div class="editBody richEditor" id="cbody" role="textbox" aria-label="Information" aria-multiline="true" contenteditable="true" spellcheck="true">${mcnEditorHtml(c.body)}</div></label><div class="formatBar" role="toolbar" aria-label="Note formatting">
+function cardHtml(c,section){const isEditing=editing===c.id;return `<article class="card" id="${escapeHtml(c.id)}"><div class="cardHead"><h3>${escapeHtml(c.title)}</h3><div class="cardActions"><button class="small" onclick="editCard('${c.id}')">✎ Edit</button></div></div>${isEditing?`<div class="editPanel"><label>Heading <input class="editTitle" id="ctitle" value="${escapeHtml(c.title)}"></label><label>Information<div class="editBody richEditor" id="cbody" role="textbox" aria-label="Information" aria-multiline="true" contenteditable="true" spellcheck="true">${mcnEditorHtml(c.body)}</div></label><div class="formatBar" role="toolbar" aria-label="Note formatting">
 <button type="button" class="fmtBtn" id="noteUndoBtn" onclick="noteUndo()" title="Undo" aria-label="Undo" disabled>↶</button>
 <button type="button" class="fmtBtn" id="noteRedoBtn" onclick="noteRedo()" title="Redo" aria-label="Redo" disabled>↷</button>
 <button type="button" class="fmtBtn" title="Add icon" aria-label="Add icon" onmousedown="event.preventDefault()" onclick="openIconPicker('note')">😊</button>
@@ -840,7 +840,7 @@ function cardHtml(c,section){const isEditing=editing===c.id;return `<article cla
 <button type="button" title="Dark purple" aria-label="Dark purple" style="--swatch:#60367b" onmousedown="event.preventDefault()" onclick="mcnSetColor('#60367b')"></button>
 <button type="button" title="Black" aria-label="Black" style="--swatch:#202020" onmousedown="event.preventDefault()" onclick="mcnSetColor('#202020')"></button>
 </div></div>
-</div><div class="editRow"><button class="btn" onclick="cancelNoteEdit('${section.id}','${c.id}')">Cancel</button><button class="btn primary" onclick="saveCard('${section.id}','${c.id}')">Save Changes</button></div></div>`:`<div class="cardBody">${renderBody(c.body)}</div>`}</article>`}
+</div><div class="editRow">${draftNoteId===c.id?'':`<button type="button" class="btn tabEditorDelete noteEditorDelete" onclick="deleteCard('${section.id}','${c.id}')">🗑 Delete Note</button>`}<button type="button" class="btn" onclick="cancelNoteEdit('${section.id}','${c.id}')">Cancel</button><button type="button" class="btn primary" onclick="saveCard('${section.id}','${c.id}')">Save Changes</button></div></div>`:`<div class="cardBody">${renderBody(c.body)}</div>`}</article>`}
 
 function render(){
  renderTabs();renderNav();
@@ -863,6 +863,9 @@ function render(){
   result+=`<div class="heading"><div><h2><button class="sectionIconButton" title="Change section icon" aria-label="Change icon for ${escapeHtml(s.title)}" onclick="openIconPicker('section','${s.id}')">${escapeHtml(s.icon||'📁')}</button> <button class="sectionTitleEdit" onclick="renameSection('${s.id}')" title="Edit section name" aria-label="Edit section name">${escapeHtml(s.title)}</button></h2></div>${tabActionsHtml(s.id)}</div>`;
   if(cards.length)result+=cards.map(c=>cardHtml(c,s)).join('');
   else result+='<div class="empty">No notes yet. Click Add Note to get started.</div>';
+ }
+ if(selected!=='home'&&!q&&displayed.some(s=>s.id===selected)){
+  result+=`<div class="sectionDeleteBottom"><button type="button" class="btn" onclick="deleteSection('${selected}')" title="Delete this section and its notes">🗑 Delete Section</button></div>`;
  }
  if(q)result=`<div class="heading"><div><h2>Search results</h2><p class="muted">${count} matching notes for “${escapeHtml(searchText)}”</p></div></div>`+(result||'<div class="empty">No matching notes found.</div>');
  el('view').innerHTML=result;
@@ -894,7 +897,16 @@ function cancelNoteEdit(sid,cid){
  if(tourStep===4)tourStep=3;
  render();
 }
-function deleteCard(sid,cid){if(!confirm('Delete this note?'))return;const s=sections.find(s=>s.id===sid);s.cards=s.cards.filter(c=>c.id!==cid);if(draftNoteId===cid){draftNoteId=null;draftSectionId=null;editing=null}save();render();toast('Note deleted')}
+function deleteCard(sid,cid){
+ const section=sections.find(s=>s.id===sid),note=section?.cards.find(c=>c.id===cid);
+ if(!note)return;
+ if(!confirm('Delete the note “'+note.title+'”? This will remove its saved contents. Save a backup first if needed.'))return;
+ const remaining=sections.map(s=>s.id===sid?{...s,cards:s.cards.filter(c=>c.id!==cid)}:s);
+ try{webGuardSave();localStorage.setItem(KEY,JSON.stringify(remaining))}
+ catch(error){alert('Could not delete this note safely: '+error.message);return}
+ sections=remaining;editing=null;draftNoteId=null;draftSectionId=null;noteHistoryId=null;notePast=[];noteFuture=[];noteCurrent=null;
+ recordHistory();render();toast('Note deleted');
+}
 function addSection(){const title=prompt('Name of your new section:');if(!title?.trim())return;const s={id:'s'+Date.now(),title:title.trim(),icon:'📁',tab:activeTab,cards:[]};sections.push(s);save();select(s.id);toast('Section created')}
 function renameSection(id){const s=sections.find(x=>x.id===id);if(!s)return;const title=prompt('Section name:',s.title);if(!title?.trim())return;s.title=title.trim();save();render()}
 function deleteCurrentSection(){if(selected==='home'||!sections.some(s=>s.id===selected)){toast('Choose a section first');return}deleteSection(selected)}
@@ -1162,7 +1174,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.19';
+const MCN_WEB_VERSION='8.0.20';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};

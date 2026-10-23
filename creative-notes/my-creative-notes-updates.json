@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.31",
+  "version": "8.0.32",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Removed the extra Note name field from New/Edit Tab. Notes still have their own name field inside the note editor, unchanged. All 15 themes and existing saved notes remain intact."
+  "notes": "Removed the redundant Delete Tab button beside Add Note in an empty tab. To delete any tab, double-click its top tab and choose Delete Tab in Edit Tab. Notes and themes remain unchanged."
 }

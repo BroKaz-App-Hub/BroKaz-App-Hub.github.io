@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.27",
+  "version": "8.0.28",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Blue and Teal themes now have more prominent sidebar section buttons, with clearer selected and unselected states. Other themes, saved tabs, and notes remain unchanged."
+  "notes": "In Blue and Teal, only the selected sidebar section has a strong colour highlight. Unselected sections have plain transparent backgrounds like Orange. Other themes and notes are unchanged."
 }

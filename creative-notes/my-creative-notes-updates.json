@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.23",
+  "version": "8.0.24",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Removed the large Hide Sidebar button. The three-line menu now opens and closes the sidebar, including on smaller screens. Existing notes and sidebar preferences are preserved."
+  "notes": "Moved Delete Section to the far-right beneath the last note in the main section area. The confirmation and all other functionality remain unchanged."
 }

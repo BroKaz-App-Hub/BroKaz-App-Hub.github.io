@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.17",
+  "version": "8.0.18",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Version 8.0.17: The sidebar now stays open while switching tabs or sections. Use Hide Sidebar to close it manually, and the menu button to reopen it. Existing notes and settings are retained."
+  "notes": "Version 8.0.18: Removed Switch View from Settings and clarified notes transfer as Export My Notes and Import My Notes. Import preserves existing tabs and notes. Existing saved notes and settings remain unchanged."
 }

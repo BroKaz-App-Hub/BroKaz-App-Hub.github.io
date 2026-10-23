@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.24",
+  "version": "8.0.25",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Moved Delete Section to the far-right beneath the last note in the main section area. The confirmation and all other functionality remain unchanged."
+  "notes": "Added extra spacing around the handwritten personalised name to prevent the final letter from being clipped. The name stays centred; saved notes are unchanged."
 }

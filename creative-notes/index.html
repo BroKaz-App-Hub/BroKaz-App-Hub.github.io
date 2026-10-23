@@ -171,11 +171,19 @@
 <button type="button" class="themeOption" data-theme-choice="orange" aria-pressed="false" onclick="chooseMcnTheme('orange')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Orange</span></button>
 <button type="button" class="themeOption" data-theme-choice="purple" aria-pressed="false" onclick="chooseMcnTheme('purple')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Purple</span></button>
 <button type="button" class="themeOption" data-theme-choice="sky-blue" aria-pressed="false" onclick="chooseMcnTheme('sky-blue')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Sky Blue</span></button>
+<button type="button" class="themeOption" data-theme-choice="slate-grey" aria-pressed="false" onclick="chooseMcnTheme('slate-grey')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Slate Grey</span></button>
+<button type="button" class="themeOption" data-theme-choice="charcoal-grey" aria-pressed="false" onclick="chooseMcnTheme('charcoal-grey')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Charcoal Grey</span></button>
+<button type="button" class="themeOption" data-theme-choice="forest-green" aria-pressed="false" onclick="chooseMcnTheme('forest-green')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Forest Green</span></button>
+<button type="button" class="themeOption" data-theme-choice="sage-green" aria-pressed="false" onclick="chooseMcnTheme('sage-green')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Sage Green</span></button>
+<button type="button" class="themeOption" data-theme-choice="burgundy" aria-pressed="false" onclick="chooseMcnTheme('burgundy')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Burgundy</span></button>
+<button type="button" class="themeOption" data-theme-choice="midnight-navy" aria-pressed="false" onclick="chooseMcnTheme('midnight-navy')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Midnight Navy</span></button>
+<button type="button" class="themeOption" data-theme-choice="chocolate-brown" aria-pressed="false" onclick="chooseMcnTheme('chocolate-brown')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Chocolate Brown</span></button>
+<button type="button" class="themeOption" data-theme-choice="golden-sand" aria-pressed="false" onclick="chooseMcnTheme('golden-sand')"><span class="themeOptionSwatch" aria-hidden="true"></span><span class="themeOptionText">Golden Sand</span></button>
 </div><p class="themePickerHelp">Choose a colour. The app becomes gradually darker towards the bottom.</p>
 <div class="settingsDivider"></div>
 <div class="settingsSectionLabel" id="mcnUpdatesHeading">Updates &amp; Downloads</div>
 <div class="mcnUpdateBox" aria-labelledby="mcnUpdatesHeading">
-  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.29</strong></div>
+  <div class="mcnUpdateCurrent">Current version: <strong>Web v8.0.30</strong></div>
   <div id="mcnUpdateStatus" class="mcnUpdateStatus" role="status" aria-live="polite">Not checked yet</div>
   <button type="button" id="mcnUpdateButton" class="mcnUpdateButton" onclick="mcnUpdateButtonClick()">Update</button>
   <div class="mcnUpdateInfo">Manual check only. Blue means current after checking; green means a new version is available.</div>
@@ -249,6 +257,14 @@ window.__mcgFlush=async function(){};
 :root[data-mcn-theme="orange"]{--mcn-page-top:#fff5e9;--mcn-page-mid:#f6be8c;--mcn-page-bottom:#a55a34;--mcn-side-top:#d28e55;--mcn-side-bottom:#8e4224;--mcn-accent:#b95d2e;--mcn-accent-ink:#fff;--mcn-tint:#fff5e8;--mcn-border:#edc7a9}
 :root[data-mcn-theme="purple"]{--mcn-page-top:#f9f3ff;--mcn-page-mid:#b79fe7;--mcn-page-bottom:#64458f;--mcn-side-top:#957ecc;--mcn-side-bottom:#493175;--mcn-accent:#7351b5;--mcn-accent-ink:#fff;--mcn-tint:#f5f0ff;--mcn-border:#d7c6f2}
 :root[data-mcn-theme="sky-blue"]{--mcn-page-top:#f1fbff;--mcn-page-mid:#aedcf6;--mcn-page-bottom:#397cb8;--mcn-side-top:#77b5df;--mcn-side-bottom:#235caa;--mcn-accent:#247ab6;--mcn-accent-ink:#fff;--mcn-tint:#effaff;--mcn-border:#bee1f2}
+:root[data-mcn-theme="slate-grey"]{--mcn-page-top:#eef2f6;--mcn-page-mid:#bac9d6;--mcn-page-bottom:#607c92;--mcn-side-top:#758798;--mcn-side-bottom:#354d60;--mcn-accent:#455f75;--mcn-accent-ink:#fff;--mcn-tint:#eef3f8;--mcn-border:#bdcbd6}
+:root[data-mcn-theme="charcoal-grey"]{--mcn-page-top:#e9edf0;--mcn-page-mid:#aab6bf;--mcn-page-bottom:#354555;--mcn-side-top:#444e5a;--mcn-side-bottom:#202d39;--mcn-accent:#252e39;--mcn-accent-ink:#fff;--mcn-tint:#edf1f4;--mcn-border:#b9c6d0}
+:root[data-mcn-theme="forest-green"]{--mcn-page-top:#e9f7ee;--mcn-page-mid:#9bcdb2;--mcn-page-bottom:#285e48;--mcn-side-top:#477e65;--mcn-side-bottom:#183f2e;--mcn-accent:#216246;--mcn-accent-ink:#fff;--mcn-tint:#eaf6ee;--mcn-border:#abd4bb}
+:root[data-mcn-theme="sage-green"]{--mcn-page-top:#f1f7ed;--mcn-page-mid:#c2d3b6;--mcn-page-bottom:#667f65;--mcn-side-top:#819982;--mcn-side-bottom:#3b5744;--mcn-accent:#536b53;--mcn-accent-ink:#fff;--mcn-tint:#f0f6ec;--mcn-border:#bbd2bc}
+:root[data-mcn-theme="burgundy"]{--mcn-page-top:#fcf0f5;--mcn-page-mid:#d5a5b8;--mcn-page-bottom:#815064;--mcn-side-top:#9b6277;--mcn-side-bottom:#4e1c35;--mcn-accent:#792f4e;--mcn-accent-ink:#fff;--mcn-tint:#fbf0f4;--mcn-border:#e3bac9}
+:root[data-mcn-theme="midnight-navy"]{--mcn-page-top:#eff4fa;--mcn-page-mid:#92afcb;--mcn-page-bottom:#2e4e72;--mcn-side-top:#395774;--mcn-side-bottom:#102a46;--mcn-accent:#183e73;--mcn-accent-ink:#fff;--mcn-tint:#eff4fa;--mcn-border:#bed0e2}
+:root[data-mcn-theme="chocolate-brown"]{--mcn-page-top:#f8f2eb;--mcn-page-mid:#ccb49c;--mcn-page-bottom:#83624a;--mcn-side-top:#957761;--mcn-side-bottom:#4c3022;--mcn-accent:#654431;--mcn-accent-ink:#fff;--mcn-tint:#f8f0e9;--mcn-border:#dfc8b3}
+:root[data-mcn-theme="golden-sand"]{--mcn-page-top:#fff7e9;--mcn-page-mid:#e5c99b;--mcn-page-bottom:#967449;--mcn-side-top:#b99969;--mcn-side-bottom:#644827;--mcn-accent:#91703e;--mcn-accent-ink:#fff;--mcn-tint:#fff7eb;--mcn-border:#edd8b0}
 :root[data-mcn-theme]:not([data-mcn-theme="default"]){background:var(--mcn-page-top)}
 :root[data-mcn-theme]:not([data-mcn-theme="default"]) .main{background:linear-gradient(180deg,var(--mcn-page-top) 0%,var(--mcn-page-mid) 57%,var(--mcn-page-bottom) 100%)}
 :root[data-mcn-theme]:not([data-mcn-theme="default"]) .sidebar{background:linear-gradient(180deg,var(--mcn-side-top) 0%,var(--mcn-side-bottom) 100%)}
@@ -299,7 +315,7 @@ window.__mcgFlush=async function(){};
 .settingsMenu button.mcnUpdateButton.isCurrent:hover{background:#205f98!important;border-color:#205f98!important;color:#fff!important}
 .settingsMenu button.mcnUpdateButton.isAvailable:hover{background:#0c6e3b!important;border-color:#0c6e3b!important;color:#fff!important}
 .settingsMenu button.mcnUpdateButton:not(.isCurrent):not(.isAvailable):hover{background:#42617c!important;border-color:#42617c!important;color:#fff!important}
-/* Seven simple named swatches in Settings, including the unchanged Default. */
+/* Fifteen named swatches in Settings, including the unchanged Default. */
 .mcnThemePicker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:9px 7px 13px;}
 .settingsMenu button.themeOption{min-width:0!important;width:100%;padding:5px 2px 6px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:flex-start;font-size:11px;line-height:1.12;text-align:center;background:#f5f9fd;color:#355774;border:2px solid transparent;border-radius:11px;position:relative;}
 .settingsMenu button.themeOption:hover,.settingsMenu button.themeOption:focus-visible{background:#e9f4fc;border-color:#93bada}
@@ -314,6 +330,14 @@ window.__mcgFlush=async function(){};
 .themeOption[data-theme-choice="orange"] .themeOptionSwatch{background:linear-gradient(180deg,#ffc58d,#9b4629)}
 .themeOption[data-theme-choice="purple"] .themeOptionSwatch{background:linear-gradient(180deg,#cbb0ff,#543285)}
 .themeOption[data-theme-choice="sky-blue"] .themeOptionSwatch{background:linear-gradient(180deg,#b4e6ff,#235caa)}
+.themeOption[data-theme-choice="slate-grey"] .themeOptionSwatch{background:linear-gradient(180deg,#a9b9c8,#344e61)}
+.themeOption[data-theme-choice="charcoal-grey"] .themeOptionSwatch{background:linear-gradient(180deg,#87949f,#202832)}
+.themeOption[data-theme-choice="forest-green"] .themeOptionSwatch{background:linear-gradient(180deg,#85b99a,#194d38)}
+.themeOption[data-theme-choice="sage-green"] .themeOptionSwatch{background:linear-gradient(180deg,#c0d0b0,#526b55)}
+.themeOption[data-theme-choice="burgundy"] .themeOptionSwatch{background:linear-gradient(180deg,#bc849a,#5c263e)}
+.themeOption[data-theme-choice="midnight-navy"] .themeOptionSwatch{background:linear-gradient(180deg,#7594b3,#112d50)}
+.themeOption[data-theme-choice="chocolate-brown"] .themeOptionSwatch{background:linear-gradient(180deg,#b99b82,#4e3325)}
+.themeOption[data-theme-choice="golden-sand"] .themeOptionSwatch{background:linear-gradient(180deg,#dfc28e,#876531)}
 .themePickerHelp{margin:0 9px 8px;color:#647e96;font-size:11px;line-height:1.4}
 </style>
 
@@ -413,7 +437,7 @@ document.addEventListener('drop',e=>{if(e.target?.id==='cbody'&&e.dataTransfer?.
 
 // v11: stored theme choice is independent of notes and does not change any v10 keys.
 const MCN_THEME_KEY='mcn-web-theme-v1';
-const MCN_THEME_NAMES=['default','blue','teal','pink','orange','purple','sky-blue'];
+const MCN_THEME_NAMES=['default','blue','teal','pink','orange','purple','sky-blue','slate-grey','charcoal-grey','forest-green','sage-green','burgundy','midnight-navy','chocolate-brown','golden-sand'];
 let mcnCurrentTheme='default';
 try { const oldTheme=localStorage.getItem(MCN_THEME_KEY); if(MCN_THEME_NAMES.includes(oldTheme))mcnCurrentTheme=oldTheme; } catch(e) {}
 function applyMcnTheme(theme){
@@ -1222,7 +1246,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('App service worker:',e)));
 }
 /* v3: Manual website update checks ONLY. No startup, hourly or visibility checks. */
-const MCN_WEB_VERSION='8.0.29';
+const MCN_WEB_VERSION='8.0.30';
 let mcnUpdateState={type:'idle',latest:null,lastChecked:0,checking:false};
 function mcnVersionCompare(a,b){
  const read=v=>{const m=String(v??'').trim().replace(/^v/i,'').match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);return m?[+m[1],+(m[2]||0),+(m[3]||0)]:null};

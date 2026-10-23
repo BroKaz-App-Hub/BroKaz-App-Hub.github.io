@@ -1,6 +1,6 @@
 {
   "app": "my-creative-notes-web",
-  "version": "8.0.25",
+  "version": "8.0.26",
   "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Added extra spacing around the handwritten personalised name to prevent the final letter from being clipped. The name stays centred; saved notes are unchanged."
+  "notes": "Removed the icon search box from New/Edit Tab. Tab name and Note name now appear inside their empty text fields instead of above them. Existing saved tabs and notes are unchanged."
 }

@@ -59,7 +59,7 @@
     .details-nav:hover,.details-nav:focus-visible{background:#cdeeff}
     .details-prev{left:9px}.details-next{right:9px}
     .details-caption{min-height:60px;margin:12px 0 14px}.details-caption strong{display:block;font-size:1.06rem}.details-caption span{display:block;color:#5f7790;font-size:.91rem}
-    .details-thumbnails{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+    .details-thumbnails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
     .details-reset{border:0;background:transparent;color:#2478b5;cursor:pointer;font:inherit;font-weight:700;font-size:.86rem;margin:-4px 0 12px;padding:3px 0}
     .details-reset:hover,.details-reset:focus-visible{text-decoration:underline;text-underline-offset:3px}
     .details-thumb{appearance:none;border:2px solid transparent;background:#ecf4fa;border-radius:10px;padding:4px;cursor:pointer;color:#325475;text-align:center;font:inherit;font-size:.76rem;line-height:1.25}
@@ -115,6 +115,19 @@
     .android-install-help p{margin:9px 0 0}
     .android-install-help-popup{background:#f0f7fc;color:#31536c;border-color:#c6ddea}
     .android-install-help-popup summary{color:#19638e}
+
+    /* Promotional gallery for My Creative Notes: separate from the web app itself */
+    .promo-overview{margin:29px 0 22px;border:1px solid #365d7b;border-radius:22px;padding:clamp(18px,3vw,27px);background:linear-gradient(160deg,#173a5a 0%,#10243a 90%);box-shadow:0 14px 38px #010c1a42}
+    .promo-overview h2{margin:0 0 6px;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.03em}
+    .promo-overview>p{margin:0 0 18px;color:#bad2e6;font-size:.95rem}
+    .promo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+    .promo-tile{appearance:none;display:flex;flex-direction:column;align-items:stretch;text-align:left;background:#ebf5ff;color:#173453;border:2px solid transparent;border-radius:15px;padding:9px;cursor:pointer;font:inherit;overflow:hidden;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+    .promo-tile img{display:block;width:100%;height:auto;aspect-ratio:1100/688;object-fit:cover;border-radius:10px;background:#d0e8fc}
+    .promo-tile strong{font-size:1.04rem;line-height:1.35;margin:12px 7px 4px}
+    .promo-tile span{font-size:.86rem;line-height:1.4;color:#526c84;margin:0 7px 10px}
+    .promo-tile:hover,.promo-tile:focus-visible{border-color:#79dfff;transform:translateY(-3px);box-shadow:0 9px 20px #030f2447;outline:none}
+    .promo-illustration-note{font-size:.79rem!important;color:#b2cfe1!important;margin:15px 2px 0!important}
+    @media(max-width:700px){.promo-grid{grid-template-columns:1fr}.promo-tile{max-width:none}.promo-tile strong{font-size:1rem}.promo-overview{margin:21px 0}}
   </style>
 </head>
 <body>
@@ -123,10 +136,32 @@
     <main id="top">
       <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, G Chat Cleaner, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
-        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Use My Creative Notes — Web Browser Edition to organise notes, lists and everyday information in a browser tab. No installation required.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/showcase.png" alt="Colourful My Creative Notes example featuring lists, tabs, screenshots and an app preview" loading="lazy" width="1448" height="1024"></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Open My Creative Notes Web Browser Edition"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/creative-notes/" aria-label="Open My Creative Notes Web Browser Edition"><span class="platform-icon" aria-hidden="true">🌐</span><span>Windows<small>Opens web browser tab</small></span></a></div></div></article>
+        <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Use My Creative Notes — Web Browser Edition to organise notes, lists and everyday information in a browser tab. No installation required.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/promo-main.avif" alt="My Creative Notes promotional illustration showing tabs, sections, notes and custom icons" loading="lazy" width="1100" height="688"></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Open My Creative Notes Web Browser Edition"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/creative-notes/" aria-label="Open My Creative Notes Web Browser Edition"><span class="platform-icon" aria-hidden="true">🌐</span><span>Windows<small>Opens web browser tab</small></span></a></div></div></article>
         <article class="card"><div class="app-symbol" aria-hidden="true">🧹</div><div class="app-title">G Chat Cleaner</div><div class="app-version">v3 · Browser bookmarklet</div><p>A convenient tool for selecting and managing conversations in your ChatGPT sidebar.</p><div class="card-footer"><span class="soon">Downloads coming soon</span></div></article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section>
+      <section class="promo-overview" aria-labelledby="promo-overview-title">
+        <h2 id="promo-overview-title">Discover My Creative Notes</h2>
+        <p>See how easy it is to create, personalise and back up your notes. Select a picture to explore it up close.</p>
+        <div class="promo-grid">
+          <button class="promo-tile" type="button" data-promo-index="1" aria-haspopup="dialog" aria-controls="notesDetails">
+            <img src="previews/my-creative-notes/promo-how-to.avif" alt="Illustrated three-step guide to creating tabs, writing notes and searching" loading="lazy" width="1100" height="688">
+            <strong>How to use it</strong>
+            <span>Make a tab, add your notes and quickly find information.</span>
+          </button>
+          <button class="promo-tile" type="button" data-promo-index="2" aria-haspopup="dialog" aria-controls="notesDetails">
+            <img src="previews/my-creative-notes/promo-customize.avif" alt="Illustrated close-up showing tab icons and different themes" loading="lazy" width="1100" height="688">
+            <strong>Make it your own</strong>
+            <span>Choose tab names, icons and colourful themes that suit you.</span>
+          </button>
+          <button class="promo-tile" type="button" data-promo-index="3" aria-haspopup="dialog" aria-controls="notesDetails">
+            <img src="previews/my-creative-notes/promo-backup.avif" alt="Illustration of local storage and exporting or importing a notes backup" loading="lazy" width="1100" height="688">
+            <strong>Keep your notes safe</strong>
+            <span>Your notes stay in your browser; export a backup when needed.</span>
+          </button>
+        </div>
+        <p class="promo-illustration-note">Illustrative examples with sample information, not exact screenshots of the current version.</p>
+      </section>
       <section class="info" id="updates" aria-label="App update information"><div class="info-card"><h3>↻ Updates in one place</h3><p>My Creative Notes — Web Browser Edition checks for updates only when you click Update. Green means up to date; blue means a newer website version is available. Other apps may have their own update options.</p></div><div class="info-card"><h3>🔒 Your notes stay yours</h3><p>My Creative Notes stores personal notes in each visitor’s browser, not on the BroKaz App Hub server. Export a backup before clearing browser data or changing browsers.</p></div></section>
       <section class="support-contact" id="contact" aria-labelledby="contact-heading">
         <div class="contact-head">
@@ -172,13 +207,13 @@
       <div class="details-layout">
         <div class="details-gallery">
           <div class="details-main">
-            <img id="notesGalleryImage" src="previews/my-creative-notes/showcase.png" onerror="this.onerror=null;this.src=&#39;previews/my-creative-notes/overview.svg&#39;" width="1448" height="1086" alt="Colourful My Creative Notes showcase with fictional example content">
+            <img id="notesGalleryImage" src="previews/my-creative-notes/promo-main.avif" onerror="this.onerror=null;this.src=&#39;previews/my-creative-notes/showcase.png&#39;" width="1100" height="688" alt="My Creative Notes promotional concept showing example tabs and notes">
             <button type="button" class="details-nav details-prev" id="notesPrev" aria-label="Previous screenshot">‹</button>
             <button type="button" class="details-nav details-next" id="notesNext" aria-label="Next screenshot">›</button>
           </div>
-          <div id="notesGalleryCaption" class="details-caption" aria-live="polite"><strong>My Creative Notes showcase</strong><span>Explore the colourful sample screens below.</span></div><button class="details-reset" id="notesShowcaseReturn" type="button">↶ Show main showcase</button>
+          <div id="notesGalleryCaption" class="details-caption" aria-live="polite"><strong>My Creative Notes</strong><span>Explore the app and its features.</span></div><button class="details-reset" id="notesShowcaseReturn" type="button">↶ Main image</button>
           <div id="notesGalleryThumbnails" class="details-thumbnails" role="group" aria-label="My Creative Notes screenshot examples"></div>
-          <p class="details-demo-note">Illustrative previews with fictional example notes; the live web edition may look slightly different.</p>
+          <p class="details-demo-note">Promotional illustrations featuring fictional example notes. They are not exact screenshots of the current app interface.</p>
         </div>
         <div class="details-about">
           <div class="details-icon" aria-hidden="true">📚</div>
@@ -206,13 +241,10 @@
   <script>
   (function(){
     const previews=[
-      {src:'previews/my-creative-notes/showcase.png',name:'Main showcase',title:'My Creative Notes showcase',description:'A colourful introduction to your notes, lists and everyday organisation.',alt:'Colourful example of My Creative Notes with fictional demo content'},
-      {src:'previews/my-creative-notes/overview.svg',name:'Main View',title:'Everything in one place',description:'Access tabs, sections and your notes from one clear screen.',alt:'Illustrated main view with Personal and Work tabs and sample notes'},
-      {src:'previews/my-creative-notes/work.svg',name:'Work Tab',title:'Organise work information',description:'Separate weekly plans, meeting notes and ideas into useful sections.',alt:'Illustrated Work tab with fictional weekly priorities'},
-      {src:'previews/my-creative-notes/personal.svg',name:'Personal Tab',title:'Keep personal plans together',description:'Save ideas, appointments, recipes and everyday reminders.',alt:'Illustrated Personal tab with fictional weekend plans'},
-      {src:'previews/my-creative-notes/lists.svg',name:'Lists Example',title:'Make everyday lists',description:'Use simple lists to track things such as shopping and tasks.',alt:'Illustrated shopping list with generic sample items'},
-      {src:'previews/my-creative-notes/settings.svg',name:'Settings',title:'Settings and updates',description:'Check for updates and manage your note backups.',alt:'Illustrated Settings panel with Check for updates and backup controls'},
-      {src:'previews/my-creative-notes/search.svg',name:'Search',title:'Find information quickly',description:'Search for a word or topic to locate matching notes.',alt:'Illustrated travel search with fictional results'},
+      {src:'previews/my-creative-notes/promo-main.avif',name:'Overview',title:'My Creative Notes',description:'Organise ideas, lists and notes with tabs and sections.',alt:'Illustrated overview of My Creative Notes with sample notes, tabs and sections'},
+      {src:'previews/my-creative-notes/promo-how-to.avif',name:'How to use it',title:'How to use My Creative Notes',description:'Create tabs, add sections and notes, then search to find what you need.',alt:'Three-step illustrated guide showing tabs, notes and search'},
+      {src:'previews/my-creative-notes/promo-customize.avif',name:'Make it your own',title:'Make it your own',description:'Personalise your workspace with tab names, icons and 15 colour themes.',alt:'Illustrated close-up of editing tab icons and colour themes'},
+      {src:'previews/my-creative-notes/promo-backup.avif',name:'Back up notes',title:'Keep a copy of your notes',description:'Notes are stored locally in your browser. Export a backup and import it when needed.',alt:'Illustrated explanation of locally saved notes, export and import'}
     ];
     const overlay=document.getElementById('notesDetails');
     const dialog=overlay.querySelector('[role="dialog"]');
@@ -237,17 +269,22 @@
       const label=document.createElement('span');label.textContent=item.name;
       button.append(img,label);button.addEventListener('click',()=>show(index+1));thumbs.append(button);
     });
-    function open(){lastFocus=document.activeElement;show(0);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('notesDetailsClose').focus();}
+    function open(index=0){lastFocus=document.activeElement;show(index);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('notesDetailsClose').focus();}
     function close(){overlay.hidden=true;document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
-    document.getElementById('notesDetailsCover').addEventListener('click',open);
-    document.getElementById('notesDetailsTitle').addEventListener('click',open);
+    document.getElementById('notesDetailsCover').addEventListener('click',()=>open());
+    document.getElementById('notesDetailsTitle').addEventListener('click',()=>open());
+    document.querySelectorAll('[data-promo-index]').forEach(button=>{
+      button.addEventListener('click',()=>open(Number(button.dataset.promoIndex)));
+    });
     document.getElementById('notesDetailsClose').addEventListener('click',close);
     document.getElementById('notesPrev').addEventListener('click',()=>show(current-1));
     document.getElementById('notesNext').addEventListener('click',()=>show(current+1));
     document.getElementById('notesShowcaseReturn').addEventListener('click',()=>show(0));
     main.addEventListener('error',()=>{
-      // Until the official PNG is uploaded, the gallery still shows a safe demo image.
-      if(main.getAttribute('src')==='previews/my-creative-notes/showcase.png'){
+      // If an AVIF image cannot be displayed, keep the gallery functional.
+      if(main.getAttribute('src')?.endsWith('.avif')){
+        main.src='previews/my-creative-notes/showcase.png';
+      }else if(main.getAttribute('src')==='previews/my-creative-notes/showcase.png'){
         main.src='previews/my-creative-notes/overview.svg';
       }
     });

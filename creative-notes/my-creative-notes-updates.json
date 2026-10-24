@@ -1,6 +1,0 @@
-{
-  "app": "my-creative-notes-web",
-  "version": "8.0.32",
-  "url": "https://brokaz-app-hub.github.io/creative-notes/",
-  "notes": "Removed the redundant Delete Tab button beside Add Note in an empty tab. To delete any tab, double-click its top tab and choose Delete Tab in Edit Tab. Notes and themes remain unchanged."
-}

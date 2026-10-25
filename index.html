@@ -67,7 +67,81 @@
     .details-body{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);gap:23px;padding-top:23px}
     .gallery-main{position:relative;aspect-ratio:1.6;background:#dcecf8;border:1px solid #b2d0e8;border-radius:13px;display:flex;align-items:center;justify-content:center;overflow:hidden}.gallery-main img{width:100%;height:100%;object-fit:contain}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:#f2faffef;color:#15446e;border:1px solid #a0bfda;border-radius:8px;font-size:1.8rem;width:36px;height:49px}.gallery-arrow.prev{left:8px}.gallery-arrow.next{right:8px}
     .gallery-caption{min-height:52px;margin:10px 0}.gallery-caption b{display:block;font-size:1rem}.gallery-caption small{display:block;color:#597b95}.gallery-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.gallery-thumb{background:#e7f3fc;color:#173a57;border:2px solid transparent;border-radius:10px;font-size:.72rem;padding:5px}.gallery-thumb[aria-current=true]{border-color:#049bed}.gallery-thumb img{width:100%;aspect-ratio:1.6;object-fit:cover;display:block;border-radius:6px;margin-bottom:4px}.gallery-tip{color:#63859b;font-size:.75rem;margin:11px 0}
-    .details-aside h2{font-size:1.6rem;line-height:1.2;margin:8px 0}.details-aside p{color:#52728b;font-size:.88rem}.details-feature{margin:11px 0;padding:11px;border-radius:11px;background:#e0f2ff;color:#173e64}.details-feature strong{display:block}.details-feature small{font-size:.8rem;color:#456e8d}.dialog-action{display:inline-block;background:#1479cf;color:#fff;text-decoration:none;border-radius:10px;padding:12px 16px;font-weight:780}.dialog-soon{padding:12px 16px;background:#dfeefa;color:#426783;border-radius:10px;display:inline-block;font-weight:700}
+    /* Neon-blue information panel (style 6), with colorful luminous feature icons (style 4). */
+    #galleryDialog .details-aside{
+      position:relative;display:flex;flex-direction:column;gap:11px;min-width:0;
+      padding:22px 17px 16px;isolation:isolate;overflow:hidden;
+      border:2px solid #13aef6;border-radius:19px;color:#f6fbff;
+      background:radial-gradient(circle at 92% 10%,#1456c488,transparent 42%),
+        linear-gradient(145deg,#071944 0%,#03102c 60%,#071e4b 100%);
+      box-shadow:inset 0 0 0 1px #7296ff44,0 0 18px #067ef05a,0 12px 28px #08224a38;
+    }
+    #galleryDialog .details-aside::before{
+      content:"";position:absolute;right:-68px;top:0;width:175px;height:175px;
+      border:1px solid #08ccff40;border-radius:50%;box-shadow:0 0 45px #166eff45;
+      pointer-events:none;z-index:-1;
+    }
+    #galleryDialog .details-aside::after{
+      content:"✦";position:absolute;right:19px;top:93px;font-size:24px;
+      color:#33cfff;text-shadow:0 0 14px #21aaff;pointer-events:none;opacity:.62;z-index:-1;
+    }
+    #galleryDialog .details-aside h2{
+      color:#fff;font-size:clamp(1.28rem,2.1vw,1.75rem);line-height:1.2;
+      letter-spacing:-.03em;margin:0;text-shadow:0 0 14px #249bff75;
+    }
+    #galleryDialog .details-aside > p{
+      color:#badaf7;font-size:.86rem;line-height:1.56;margin:0 0 3px;
+    }
+    #galleryDialog #galleryFeatures{display:grid;gap:9px;margin:5px 0 10px}
+    #galleryDialog .details-feature{
+      display:grid;grid-template-columns:45px minmax(0,1fr);align-items:center;gap:10px;
+      min-height:65px;margin:0;padding:8px 9px;border-radius:12px;
+      border:1px solid #386adb;background:linear-gradient(100deg,#123c87e9,#102465ec);
+      color:#fff;box-shadow:inset 0 1px 0 #a9d3ff2b,0 3px 12px #02091b4b;
+    }
+    #galleryDialog .details-feature .feature-icon{
+      display:grid;place-items:center;width:44px;height:44px;border-radius:11px;
+      font-size:1.34rem;border:1px solid #ffffff7a;line-height:1;
+      background:linear-gradient(145deg,#ffcd30,#ff790f);box-shadow:0 0 13px #ffaf35a3,inset 0 1px 1px #fff8;
+    }
+    #galleryDialog .details-feature:nth-child(2) .feature-icon{
+      background:linear-gradient(145deg,#ff5fc9,#d51881);box-shadow:0 0 13px #ed4cb5a3,inset 0 1px 1px #fff8;
+    }
+    #galleryDialog .details-feature:nth-child(3) .feature-icon{
+      background:linear-gradient(145deg,#35ecaa,#00a77d);box-shadow:0 0 13px #2be4b09e,inset 0 1px 1px #fff8;
+    }
+    #galleryDialog .details-feature:nth-child(4) .feature-icon{
+      background:linear-gradient(145deg,#8a71ff,#4d32d4);box-shadow:0 0 13px #7365ff9e,inset 0 1px 1px #fff8;
+    }
+    #galleryDialog .feature-text{min-width:0}
+    #galleryDialog .details-feature strong{display:block;color:#fff;font-size:.88rem;line-height:1.28;margin-bottom:3px}
+    #galleryDialog .details-feature small{display:block;color:#cbddff;font-size:.75rem;line-height:1.38}
+    #galleryDialog #galleryAction{margin-top:auto;padding-top:12px}
+    #galleryDialog .dialog-action,#galleryDialog .dialog-soon{
+      display:flex;align-items:center;justify-content:center;min-height:53px;
+      width:100%;text-align:center;padding:11px 13px;border-radius:14px;
+      font-size:.89rem;font-weight:850;line-height:1.25;
+    }
+    #galleryDialog .dialog-action{
+      color:#fff;text-decoration:none;border:2px solid #86efff;
+      background:linear-gradient(115deg,#06c8f2,#0c6ff4);
+      box-shadow:inset 0 1px 0 #edffff99,0 0 16px #079cfff0;
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+    #galleryDialog .dialog-action:hover,#galleryDialog .dialog-action:focus-visible{
+      transform:translateY(-2px);box-shadow:inset 0 1px 0 #edffff99,0 0 23px #04bafa;
+    }
+    #galleryDialog .dialog-soon{
+      border:1px solid #467eaf;color:#c8e9ff;
+      background:linear-gradient(115deg,#153769,#12315b);
+      box-shadow:inset 0 1px 0 #b2eaff25;cursor:default;
+    }
+    @media(max-width:900px){#galleryDialog .details-aside{min-height:0}}
+    @media(max-width:390px){
+      #galleryDialog .details-aside{padding:17px 12px 13px}
+      #galleryDialog .details-feature{grid-template-columns:39px minmax(0,1fr);gap:8px}
+      #galleryDialog .details-feature .feature-icon{width:38px;height:38px}
+    }
     .contact-form-dialog{max-width:590px}.contact-form-dialog h2{margin:14px 0 5px}.contact-form-dialog p{font-size:.86rem;color:#486a86}.contact-form{display:grid;gap:12px}.contact-form label{font-size:.84rem;font-weight:700}.contact-form input,.contact-form textarea{background:#fff;color:#1c3551;width:100%;border:1px solid #a8c7df;border-radius:9px;padding:11px}.contact-form textarea{min-height:125px;resize:vertical}.form-submit{background:#0a93da;color:#fff;border:0;border-radius:10px;padding:13px;font-weight:800}.form-privacy{font-size:.72rem;color:#638099}.form-privacy a{color:#0e73ae}.hp{position:absolute;left:-10000px;opacity:0;width:1px;height:1px}
     @media(max-width:1150px){.apps-layout{grid-template-columns:180px minmax(0,1fr) minmax(0,1fr)}.view-all{display:none}.hero-copy{padding-left:25px}.contact-photo{width:49%}.hero-img{right:-100px;width:80%}}
     @media(max-width:900px){.top-cta{display:none}.hero{min-height:440px}.hero-img{right:-245px;top:38px;width:100%;opacity:.75}.hero-copy{max-width:470px}.apps-layout{grid-template-columns:repeat(2,minmax(0,1fr))}.future-apps{grid-column:1 / -1}.apps-intro{grid-column:1/-1}.apps-intro p{max-width:none}.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-hero{grid-template-columns:1fr 1fr}.contact-photo{width:65%;opacity:.3}.contact-actions{max-width:none}.details-body{grid-template-columns:1fr}}
@@ -182,7 +256,7 @@
     };
     const galleryDialog=document.getElementById('galleryDialog'),galleryImage=document.getElementById('galleryImage'),galleryCaption=document.getElementById('galleryCaption'),galleryThumbs=document.getElementById('galleryThumbs');let currentGallery='organiser',current=0;
     function show(n){const items=galleries[currentGallery].images;current=(n+items.length)%items.length;const item=items[current];galleryImage.src=item[0];galleryImage.alt=item[1];galleryCaption.replaceChildren();const title=document.createElement('b');title.textContent=item[1];const caption=document.createElement('small');caption.textContent=item[2];galleryCaption.append(title,caption);Array.from(galleryThumbs.children).forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));}
-    function openGallery(key){currentGallery=key;galleryDialog.classList.toggle('notes-gallery',key==='notes');const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();data.features.forEach(([heading,body])=>{const item=document.createElement('div');item.className='details-feature';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;item.append(b,p);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
+    function openGallery(key){currentGallery=key;galleryDialog.classList.toggle('notes-gallery',key==='notes');const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();const featureIcons=key==='notes'?['📝','📅','💾']:['🔎','☑️','🗑️','🔒'];data.features.forEach(([heading,body],index)=>{const item=document.createElement('div');item.className='details-feature';const icon=document.createElement('span');icon.className='feature-icon';icon.textContent=featureIcons[index]||'✦';icon.setAttribute('aria-hidden','true');const words=document.createElement('div');words.className='feature-text';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;words.append(b,p);item.append(icon,words);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
     document.querySelectorAll('[data-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(b.dataset.gallery)));document.getElementById('galleryClose').addEventListener('click',()=>galleryDialog.close());document.getElementById('galleryPrev').addEventListener('click',()=>show(current-1));document.getElementById('galleryNext').addEventListener('click',()=>show(current+1));galleryDialog.addEventListener('click',e=>{if(e.target===galleryDialog)galleryDialog.close();});document.addEventListener('keydown',e=>{if(!galleryDialog.open)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);}if(e.key==='ArrowRight'){e.preventDefault();show(current+1);}});
     const contactDialog=document.getElementById('contactDialog');document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const idea=b.dataset.contact==='idea';document.getElementById('contactDialogTitle').textContent=idea?'Suggest an app idea':'Send a message';document.getElementById('contactSubject').value=idea?'New BroKaz app idea':'Message from BroKaz App Hub';contactDialog.showModal();document.getElementById('visitorName').focus();}));document.getElementById('contactClose').addEventListener('click',()=>contactDialog.close());contactDialog.addEventListener('click',e=>{if(e.target===contactDialog)contactDialog.close();});
   })();

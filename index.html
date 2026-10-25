@@ -142,7 +142,7 @@
   <button type="button" class="app-title app-title-button" id="organiserTitle" aria-haspopup="dialog" aria-controls="organiserDetails">ChatGPT Chat Organiser</button>
   <div class="app-version">v11.5 · Chrome extension</div>
   <p>Search, select and delete eligible chats found in the ChatGPT Recent sidebar. Manages <strong>Recent chats only</strong>.</p>
-  <button class="notes-cover-button" id="organiserCover" type="button" aria-haspopup="dialog" aria-controls="organiserDetails" aria-label="View ChatGPT Chat Organiser pictures and features"><img src="previews/recent-chat-manager/feature-5.svg" alt="ChatGPT Chat Organiser feature overview illustration" loading="lazy" width="1280" height="800"></button>
+  <button class="notes-cover-button" id="organiserCover" type="button" aria-haspopup="dialog" aria-controls="organiserDetails" aria-label="View ChatGPT Chat Organiser pictures and features"><img src="previews/recent-chat-manager/01_Main_Overview.png" onerror="this.onerror=null;this.src='previews/recent-chat-manager/feature-5.svg'" alt="ChatGPT Chat Organiser main promotional image" loading="lazy" width="1280" height="800"></button>
   <div class="card-footer notes-actions"><span class="soon">Chrome Web Store download coming soon</span></div>
 </article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
@@ -296,7 +296,7 @@
         <div class="details-gallery">
           <div class="details-main">
             <button type="button" class="details-nav details-prev" id="organiserPrev" aria-label="Previous picture">‹</button>
-            <img id="organiserImage" src="previews/recent-chat-manager/feature-1.svg" alt="Search Recent chats illustration">
+            <img id="organiserImage" src="previews/recent-chat-manager/01_Main_Overview.png" alt="Search Recent chats illustration">
             <button type="button" class="details-nav details-next" id="organiserNext" aria-label="Next picture">›</button>
           </div>
           <div class="details-caption" id="organiserCaption"></div>
@@ -323,11 +323,11 @@
   <script>
   (function(){
     const items=[
-      ['feature-1.svg','Search Recent chats','Find eligible chats shown in the Recent sidebar.'],
-      ['feature-2.svg','Select multiple chats','Pick chats you want to remove.'],
-      ['feature-3.svg','Confirm deletion','Check your selection before deleting.'],
-      ['feature-4.svg','Protect current chat','The active conversation is excluded from bulk deletion.'],
-      ['feature-5.svg','Feature overview','See how the organiser works.']
+      ['01_Main_Overview.png','Main overview','Search, select and delete eligible Recent chats.','feature-5.svg'],
+      ['02_Search_Instantly.png','Search instantly','Find recent conversations quickly.','feature-1.svg'],
+      ['03_Select_Multiple.png','Select multiple','Choose eligible conversations from your Recent sidebar.','feature-2.svg'],
+      ['04_Delete_Confirmation.png','Delete with confirmation','Review selected conversations before deletion.','feature-3.svg'],
+      ['05_Protect_Current_Chat.png','Protect your current chat','Your active conversation stays excluded.','feature-4.svg']
     ];
     const overlay=document.getElementById('organiserDetails');
     const dialog=overlay.querySelector('[role="dialog"]');
@@ -337,7 +337,8 @@
     let current=0,returnFocus=null;
     function show(n){
       current=(n+items.length)%items.length;
-      const [file,title,description]=items[current];
+      const [file,title,description,fallback]=items[current];
+      img.onerror=()=>{img.onerror=null;img.src='previews/recent-chat-manager/'+fallback;};
       img.src='previews/recent-chat-manager/'+file;img.alt=title+' illustration';
       caption.replaceChildren();
       const strong=document.createElement('strong');strong.textContent=title;
@@ -345,14 +346,14 @@
       caption.append(strong,span);
       [...thumbs.children].forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));
     }
-    items.forEach(([file,title],i)=>{
+    items.forEach(([file,title,description,fallback],i)=>{
       const b=document.createElement('button');b.type='button';b.className='details-thumb';
       b.setAttribute('aria-label','View '+title);
-      const picture=document.createElement('img');picture.src='previews/recent-chat-manager/'+file;picture.alt='';picture.loading='lazy';
+      const picture=document.createElement('img');picture.onerror=()=>{picture.onerror=null;picture.src='previews/recent-chat-manager/'+fallback;};picture.src='previews/recent-chat-manager/'+file;picture.alt='';picture.loading='lazy';
       const label=document.createElement('span');label.textContent=title;
       b.append(picture,label);b.addEventListener('click',()=>show(i));thumbs.append(b);
     });
-    function open(){returnFocus=document.activeElement;show(4);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('organiserClose').focus();}
+    function open(){returnFocus=document.activeElement;show(0);overlay.hidden=false;document.body.style.overflow='hidden';document.getElementById('organiserClose').focus();}
     function close(){overlay.hidden=true;document.body.style.overflow='';if(returnFocus?.focus)returnFocus.focus();}
     document.getElementById('organiserTitle').addEventListener('click',open);
     document.getElementById('organiserCover').addEventListener('click',open);

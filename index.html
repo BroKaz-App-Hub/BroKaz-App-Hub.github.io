@@ -16,7 +16,6 @@
     .header-inside{max-width:1170px;padding:10px 24px;min-height:65px;margin:auto;display:flex;align-items:center;gap:24px}
     .brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-size:1.32rem;font-weight:850;white-space:nowrap;letter-spacing:-.035em}.brand img{width:42px;height:42px;border-radius:10px;box-shadow:0 0 17px #007dfb80}
     .top-nav{display:flex;align-items:center;gap:36px;margin-left:auto}.top-nav a{text-decoration:none;font-size:.92rem;color:#a8e4ff}.top-nav a:hover{color:#fff}
-    .top-cta{display:inline-block;background:#08e4ff;border-radius:13px;padding:12px 20px;color:#052040;font-size:.86rem;font-weight:830;text-decoration:none;box-shadow:0 0 20px #009dff66}
     .hero-zone{background:radial-gradient(ellipse at 72% 53%,#0046a588,transparent 44%),linear-gradient(180deg,#041a3d 0%,#03132c 100%);overflow:hidden;border-bottom:1px solid #0e5eac}
     .hero{position:relative;min-height:470px;isolation:isolate;display:flex;align-items:center}
     .hero-img{position:absolute;z-index:1;width:min(69%,895px);height:auto;right:-34px;top:34px;pointer-events:none;filter:saturate(1.08)}
@@ -117,12 +116,27 @@
       .hero-copy{width:44%;max-width:470px}
       .hero-img{width:60vw;top:83px;right:0}
     }
+
+    /* Dark, well-defined outlines for My Creative Notes gallery only. */
+    #galleryDialog.notes-gallery .gallery-main{
+      border:3px solid #173454;
+      box-shadow:0 0 0 1px #062a48,0 8px 24px #0a24392b;
+    }
+    #galleryDialog.notes-gallery .gallery-thumb{
+      border:3px solid #24425f;
+      background:#e6f0f8;
+      box-shadow:0 3px 9px #102d451e;
+    }
+    #galleryDialog.notes-gallery .gallery-thumb[aria-current="true"]{
+      border-color:#036496;
+      box-shadow:0 0 0 2px #62cfff,0 3px 12px #0b497339;
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.app-cover img{transition:none}}
   </style>
 </head>
 <body>
   <header class="site-header" id="top">
-    <div class="header-inside"><a class="brand" href="#top"><img src="brokaz-logo.webp" alt=""> BroKaz App Hub</a><nav class="top-nav" aria-label="Main navigation"><a href="#apps">Our apps</a><a href="#updates">Updates</a><a href="#contact">Contact</a></nav><a class="top-cta" href="#apps">Explore the apps&nbsp; →</a></div>
+    <div class="header-inside"><a class="brand" href="#top"><img src="brokaz-logo.webp" alt=""> BroKaz App Hub</a><nav class="top-nav" aria-label="Main navigation"><a href="#apps">Our apps</a><a href="#updates">Updates</a><a href="#contact">Contact</a></nav></div>
   </header>
   <main>
     <section class="hero-zone"><div class="hero wrap">
@@ -168,7 +182,7 @@
     };
     const galleryDialog=document.getElementById('galleryDialog'),galleryImage=document.getElementById('galleryImage'),galleryCaption=document.getElementById('galleryCaption'),galleryThumbs=document.getElementById('galleryThumbs');let currentGallery='organiser',current=0;
     function show(n){const items=galleries[currentGallery].images;current=(n+items.length)%items.length;const item=items[current];galleryImage.src=item[0];galleryImage.alt=item[1];galleryCaption.replaceChildren();const title=document.createElement('b');title.textContent=item[1];const caption=document.createElement('small');caption.textContent=item[2];galleryCaption.append(title,caption);Array.from(galleryThumbs.children).forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));}
-    function openGallery(key){currentGallery=key;const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();data.features.forEach(([heading,body])=>{const item=document.createElement('div');item.className='details-feature';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;item.append(b,p);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
+    function openGallery(key){currentGallery=key;galleryDialog.classList.toggle('notes-gallery',key==='notes');const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();data.features.forEach(([heading,body])=>{const item=document.createElement('div');item.className='details-feature';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;item.append(b,p);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
     document.querySelectorAll('[data-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(b.dataset.gallery)));document.getElementById('galleryClose').addEventListener('click',()=>galleryDialog.close());document.getElementById('galleryPrev').addEventListener('click',()=>show(current-1));document.getElementById('galleryNext').addEventListener('click',()=>show(current+1));galleryDialog.addEventListener('click',e=>{if(e.target===galleryDialog)galleryDialog.close();});document.addEventListener('keydown',e=>{if(!galleryDialog.open)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);}if(e.key==='ArrowRight'){e.preventDefault();show(current+1);}});
     const contactDialog=document.getElementById('contactDialog');document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const idea=b.dataset.contact==='idea';document.getElementById('contactDialogTitle').textContent=idea?'Suggest an app idea':'Send a message';document.getElementById('contactSubject').value=idea?'New BroKaz app idea':'Message from BroKaz App Hub';contactDialog.showModal();document.getElementById('visitorName').focus();}));document.getElementById('contactClose').addEventListener('click',()=>contactDialog.close());contactDialog.addEventListener('click',e=>{if(e.target===contactDialog)contactDialog.close();});
   })();

@@ -93,6 +93,17 @@
     @media(max-width:810px){.details-layout{grid-template-columns:1fr}.details-dialog{padding:22px}.details-thumbnails{grid-template-columns:repeat(3,minmax(0,1fr))}.details-about h2{margin-top:6px}.details-overlay{padding:10px}.details-dialog{max-height:calc(100dvh - 20px)}}
     @media(max-width:420px){.details-thumbnails{grid-template-columns:repeat(2,minmax(0,1fr))}.details-dialog{padding:14px}.details-layout{gap:17px}}
     .notes-card{padding:18px}
+    /* Synchronise the app cards: identical title, description, preview and action positions. */
+    #apps .cards{align-items:stretch}
+    #apps .notes-card{display:flex;flex-direction:column}
+    #apps .notes-card>.app-title-button{line-height:1.4;margin-bottom:9px}
+    #apps .notes-card>p{min-height:5.5em;margin-bottom:16px}
+    #apps .notes-card>.notes-cover-button{margin-bottom:18px;flex-shrink:0}
+    #apps .notes-card>.card-footer{margin-top:auto}
+    #apps .notes-card .platform-downloads{margin-top:0}
+    #apps .notes-card .platform-download{width:100%;max-width:252px;justify-content:flex-start;min-height:76px}
+    @media(max-width:640px){#apps .notes-card>p{min-height:0}}
+
     .notes-cover-button{position:relative;display:block;appearance:none;background:#174361;border:1px solid #4c728f;box-shadow:0 6px 19px #071a2b80;padding:0;width:100%;aspect-ratio:1448/1024;border-radius:14px;overflow:hidden;cursor:pointer;margin:0 0 15px}
     .notes-cover-button img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .18s ease}
     .notes-cover-button:hover img,.notes-cover-button:focus-visible img{transform:scale(1.025)}
@@ -140,10 +151,9 @@
         <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Use My Creative Notes — Web Browser Edition to organise notes, lists and everyday information in a browser tab. No installation required.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/promo-main.avif" alt="My Creative Notes promotional illustration showing tabs, sections, notes and custom icons" loading="lazy" width="1100" height="688"></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Open My Creative Notes Web Browser Edition"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/creative-notes/" aria-label="Open My Creative Notes Web Browser Edition"><span class="platform-icon" aria-hidden="true">🌐</span><span>Windows<small>Opens web browser tab</small></span></a></div></div></article>
         <article class="card notes-card">
   <button type="button" class="app-title app-title-button" id="organiserTitle" aria-haspopup="dialog" aria-controls="organiserDetails">ChatGPT Chat Organiser</button>
-  <div class="app-version">v11.5 · Chrome extension</div>
   <p>Search, select and delete eligible chats found in the ChatGPT Recent sidebar. Manages <strong>Recent chats only</strong>.</p>
   <button class="notes-cover-button" id="organiserCover" type="button" aria-haspopup="dialog" aria-controls="organiserDetails" aria-label="View ChatGPT Chat Organiser pictures and features"><img src="previews/recent-chat-manager/01_Main_Overview.png" onerror="this.onerror=null;this.src='previews/recent-chat-manager/feature-5.svg'" alt="ChatGPT Chat Organiser main promotional image" loading="lazy" width="1280" height="800"></button>
-  <div class="card-footer notes-actions"><span class="soon">Chrome Web Store download coming soon</span></div>
+  <div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Chrome Web Store availability"><span class="platform-download platform-android platform-pending" aria-label="Chrome Web Store download coming soon"><span class="platform-icon" aria-hidden="true">🧩</span><span>Chrome<small>Web Store coming soon</small></span></span></div></div>
 </article>
         <article class="card coming"><div class="app-symbol" aria-hidden="true">＋</div><div class="app-title">More apps coming</div><div class="app-version">Future releases</div><p>New applications and helpful tools will appear here as they’re ready to share.</p><div class="card-footer"><span class="soon">Stay tuned</span></div></article>
       </div></section><section class="support-contact" id="contact" aria-labelledby="contact-heading">

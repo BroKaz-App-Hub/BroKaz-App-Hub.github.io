@@ -141,13 +141,54 @@
     .promo-tile:hover,.promo-tile:focus-visible{border-color:#79dfff;transform:translateY(-3px);box-shadow:0 9px 20px #030f2447;outline:none}
     .promo-illustration-note{font-size:.79rem!important;color:#b2cfe1!important;margin:15px 2px 0!important}
     @media(max-width:700px){.promo-grid{grid-template-columns:1fr}.promo-tile{max-width:none}.promo-tile strong{font-size:1rem}.promo-overview{margin:21px 0}}
+
+/* BroKaz neon homepage: responsive and accessible; original app cards and dialogs preserved. */
+:root{--accent:#35e5fb}
+body{background:radial-gradient(circle at 78% 11%,#083f89 0%,transparent 35%),radial-gradient(circle at 15% 38%,#0a2760 0%,transparent 30%),#061329}
+.wrap{max-width:1280px}
+.header{padding:18px 0;border-bottom:1px solid #1c39627d}
+.brand-symbol{background:transparent;border-color:#276bba;border-radius:12px;overflow:hidden}
+nav a:hover{color:#55ecff}
+.brokaz-hero{max-width:none;position:relative;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:24px;min-height:510px;padding:46px 0 48px;isolation:isolate}
+.brokaz-hero:before{content:"";position:absolute;z-index:-1;inset:auto -5% 2% -5%;height:135px;background:radial-gradient(ellipse at 70% 50%,#047bd955,transparent 65%);border-bottom:2px solid #058cfa8a;border-radius:50%;filter:drop-shadow(0 0 15px #127fff7a);transform:rotate(-3deg);pointer-events:none}
+.brokaz-hero h1{font-size:clamp(3.2rem,6.1vw,5.7rem);line-height:1.06;margin:15px 0 23px;letter-spacing:-.06em}
+.brokaz-hero h1 span{color:#32dcf4;text-shadow:0 0 30px #007de955}
+.brokaz-hero .hero-copy{min-width:0;position:relative;z-index:1}
+.brokaz-hero p{font-size:1.07rem;max-width:530px;line-height:1.65}
+.brokaz-hero-cta{background:linear-gradient(105deg,#38d9f2,#65eff5);box-shadow:0 0 30px #08abdb55;gap:18px}
+.brokaz-trust{display:flex;flex-wrap:wrap;gap:12px 25px;margin-top:31px;color:#b8e9ff}
+.brokaz-trust>span{font-size:1.25rem;display:grid;grid-template-columns:auto 1fr;column-gap:8px;line-height:1.2}
+.brokaz-trust b{font-size:.78rem;color:#f0fbff}
+.brokaz-trust small{grid-column:2;font-size:.7rem;color:#83c6ec}
+.hero-art{position:relative;display:grid;place-items:center;min-height:410px;background:radial-gradient(circle,#1589ef56 0%,#09439636 37%,transparent 68%)}
+.hero-art:before,.hero-art:after{content:"";position:absolute;width:85%;height:43%;border:3px solid #168fff77;border-radius:50%;box-shadow:0 0 24px #147afc77;transform:rotate(-26deg);pointer-events:none}
+.hero-art:after{width:103%;height:54%;transform:rotate(20deg);border-color:#0bd4fb55}
+.hero-art>img{z-index:1;width:min(74%,355px);height:auto;filter:drop-shadow(0 18px 35px #001127) drop-shadow(0 0 30px #129afa8a);transform:rotate(-5deg)}
+.art-orbit{position:absolute;z-index:2;display:grid;place-items:center;font-size:2rem;background:linear-gradient(145deg,#0754a8,#061b4d);border:1px solid #20cdff;border-radius:18px;box-shadow:0 0 22px #009fff8a;padding:10px}
+.orbit-a{top:16%;left:14%;color:#f9ca48}.orbit-b{top:5%;right:22%}.orbit-c{right:3%;top:32%}.orbit-d{bottom:13%;left:8%}
+.art-tagline{position:absolute;z-index:2;right:0;bottom:12%;color:#c5edff;font-size:1.1rem;font-weight:700;font-style:italic;text-shadow:0 0 11px #00bfff;transform:rotate(-9deg);text-align:center}
+#apps{scroll-margin-top:22px}
+#apps .section-title h2{color:#fff}
+#apps .card{border-color:#227dc0;box-shadow:0 0 19px #0066bf24;background:linear-gradient(145deg,#102f54,#081e39)}
+#apps .notes-cover-button{border-color:#2a94d8}
+.support-contact{position:relative;overflow:hidden;background:linear-gradient(120deg,#09214a,#0a477c 65%,#071b3e);border-color:#198bd9;box-shadow:0 0 35px #066acb33}
+.support-contact:after{content:"Bro ☕";position:absolute;right:4%;top:20%;color:#78e8ff;font-size:clamp(2rem,6vw,5rem);font-weight:900;opacity:.16;transform:rotate(-9deg);pointer-events:none}
+@media(max-width:790px){.brokaz-hero{grid-template-columns:1fr;padding:40px 0 36px}.hero-art{min-height:270px}.hero-art>img{width:min(56%,260px)}.art-tagline{right:8%;bottom:6%}.brokaz-trust{gap:13px}.header{flex-wrap:wrap}}
+@media(prefers-reduced-motion:no-preference){.hero-art>img{animation:brokazFloat 5s ease-in-out infinite}.orbit-a,.orbit-c{animation:brokazFloat 6s ease-in-out infinite reverse}@keyframes brokazFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}}
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="header"><a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"><img src="assets/brokaz-brand-icon.svg" alt="" width="44" height="44" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:12px"></span> BroKaz App Hub</a><nav aria-label="Main navigation"><a href="#apps">Our apps</a><a href="#updates">Updates</a><a href="#contact">Contact</a></nav></header>
     <main id="top">
-      <section class="hero"><div class="eyebrow">Your apps, one place</div><h1>Useful apps.<br>Made to make life easier.</h1><p>Welcome to BroKaz App Hub — the home of My Creative Notes, ChatGPT Chat Organiser, and new apps to come. Find releases, downloads and updates here.</p><a class="cta" href="#apps">Explore the apps <span aria-hidden="true">&nbsp;→</span></a></section>
+      <section class="hero brokaz-hero" aria-labelledby="heroHeading">
+  <div class="hero-copy"><div class="eyebrow">YOUR APPS, ONE PLACE</div><h1 id="heroHeading">Good ideas.<br><span>Great apps.</span></h1>
+  <p>Welcome to BroKaz App Hub — the home of My Creative Notes, ChatGPT Chat Organiser, and new apps to come. Find releases, downloads and updates here.</p>
+  <a class="cta brokaz-hero-cta" href="#apps">Explore the apps <span aria-hidden="true">→</span></a>
+  <div class="brokaz-trust" aria-label="Our approach"><span>⚡ <b>Useful tools</b><small>For everyday life</small></span><span>♡ <b>Made with care</b><small>By an indie creator</small></span><span>✧ <b>Simple &amp; reliable</b><small>Helpful everyday apps</small></span></div></div>
+  <div class="hero-art" aria-hidden="true"><span class="art-orbit orbit-a">✦</span><span class="art-orbit orbit-b">💡</span><span class="art-orbit orbit-c">💬</span><span class="art-orbit orbit-d">👍</span><img src="assets/brokaz-brand-icon.svg" alt="" width="360" height="360"><span class="art-tagline">Good Apps<br>Brighter Days</span></div>
+</section>
       <section id="apps" aria-labelledby="apps-heading"><div class="section-title"><h2 id="apps-heading">Our apps</h2><span>More tools will be added over time.</span></div><div class="cards">
         <article class="card notes-card"><button type="button" class="app-title app-title-button" id="notesDetailsTitle" aria-haspopup="dialog" aria-controls="notesDetails">My Creative Notes</button><p>Use My Creative Notes — Web Browser Edition to organise notes, lists and everyday information in a browser tab. No installation required.</p><button class="notes-cover-button" id="notesDetailsCover" type="button" aria-haspopup="dialog" aria-controls="notesDetails" aria-label="View My Creative Notes screenshots and app details"><img src="previews/my-creative-notes/promo-main.avif" alt="My Creative Notes promotional illustration showing tabs, sections, notes and custom icons" loading="lazy" width="1100" height="688"></button><div class="card-footer notes-actions"><div class="platform-downloads" role="group" aria-label="Open My Creative Notes Web Browser Edition"><a class="platform-download platform-win" href="https://brokaz-app-hub.github.io/creative-notes/" aria-label="Open My Creative Notes Web Browser Edition"><span class="platform-icon" aria-hidden="true">🌐</span><span>Windows<small>Opens web browser tab</small></span></a></div></div></article>
         <article class="card notes-card">

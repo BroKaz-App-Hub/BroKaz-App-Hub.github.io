@@ -67,6 +67,158 @@
     .details-body{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);gap:23px;padding-top:23px}
     .gallery-main{position:relative;aspect-ratio:1.6;background:#dcecf8;border:1px solid #b2d0e8;border-radius:13px;display:flex;align-items:center;justify-content:center;overflow:hidden}.gallery-main img{width:100%;height:100%;object-fit:contain}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:#f2faffef;color:#15446e;border:1px solid #a0bfda;border-radius:8px;font-size:1.8rem;width:36px;height:49px}.gallery-arrow.prev{left:8px}.gallery-arrow.next{right:8px}
     .gallery-caption{min-height:52px;margin:10px 0}.gallery-caption b{display:block;font-size:1rem}.gallery-caption small{display:block;color:#597b95}.gallery-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.gallery-thumb{background:#e7f3fc;color:#173a57;border:2px solid transparent;border-radius:10px;font-size:.72rem;padding:5px}.gallery-thumb[aria-current=true]{border-color:#049bed}.gallery-thumb img{width:100%;aspect-ratio:1.6;object-fit:cover;display:block;border-radius:6px;margin-bottom:4px}.gallery-tip{color:#63859b;font-size:.75rem;margin:11px 0}
+
+    /* Match approved BroKaz neon-glass app panels: desktop and mobile friendly.
+       Right-hand app cards remain real HTML with real interactive actions. */
+    #galleryDialog{
+      background:radial-gradient(circle at 60% 0%,#0e3d88 0%,#071833 48%,#030e24 100%);
+      border:1px solid #177bcf;
+      box-shadow:0 0 0 1px #70cfff44,0 0 38px #007bff50,0 28px 85px #000e;
+      color:#eaf8ff;max-width:min(1340px,calc(100vw - 24px));
+      padding:21px;
+    }
+    #galleryDialog .dialog-close{
+      color:#fff;background:linear-gradient(145deg,#0e4483,#071a38);
+      border:1px solid #5bcfff;box-shadow:0 0 10px #05b8fe5a;
+      z-index:5;
+    }
+    #galleryDialog .details-body{
+      grid-template-columns:minmax(0,1.15fr) minmax(380px,1fr);
+      align-items:stretch;gap:22px;padding-top:30px;
+    }
+    #galleryDialog .gallery-main{
+      border-color:#15609e;background:#eaf4ff;
+      box-shadow:0 0 14px #0c94fa77;
+    }
+    #galleryDialog.notes-gallery .gallery-main{border-color:#173454;box-shadow:0 0 0 1px #258cea,0 0 18px #0d90fc66}
+    #galleryDialog .gallery-caption b{color:#fff}
+    #galleryDialog .gallery-caption small,#galleryDialog .gallery-tip{color:#acd2eb}
+    #galleryDialog .gallery-thumb{
+      background:#0a2e5d;color:#e1f3ff;border-color:#1d5e9b;
+      box-shadow:inset 0 1px 0 #9fddff1c;
+    }
+    #galleryDialog .gallery-thumb[aria-current="true"]{border-color:#35dfff;box-shadow:0 0 11px #22cfff77}
+    #galleryDialog.notes-gallery .gallery-thumb{border-color:#24425f;background:#e6f0f8;color:#173a57}
+    #galleryDialog.notes-gallery .gallery-thumb[aria-current="true"]{border-color:#036496;box-shadow:0 0 0 2px #62cfff,0 3px 12px #0b497339}
+    #galleryDialog .details-aside{
+      min-height:730px;gap:13px;padding:20px 20px 17px;
+      border:2px solid #19b8ff;border-radius:24px;
+      background:
+        radial-gradient(ellipse at 100% 10%,#1569e56b,transparent 47%),
+        radial-gradient(ellipse at 5% 96%,#812bce55,transparent 36%),
+        linear-gradient(145deg,#05112f 0%,#061941 54%,#020d2b 100%);
+      box-shadow:inset 0 0 0 2px #0c59b07a,0 0 0 1px #030921,0 0 24px #00aaff88,0 0 40px #2d44e944;
+    }
+    #galleryDialog .details-aside::before{
+      width:230px;height:230px;right:-85px;top:75px;
+      border:0;border-radius:0;box-shadow:none;
+      background:repeating-radial-gradient(ellipse at 100% 100%,transparent 0px,transparent 15px,#16abff3b 16px,#16abff3b 18px,transparent 19px,transparent 25px);
+      transform:rotate(-13deg);opacity:.5;
+    }
+    #galleryDialog .details-aside::after{content:"✦";top:145px;right:20px;color:#4ddfff;opacity:.9}
+    #galleryDialog .details-brand{display:grid;grid-template-columns:70px minmax(0,1fr);align-items:center;gap:14px;z-index:1}
+    #galleryDialog .details-brand-icon{
+      width:70px;height:70px;display:grid;place-items:center;border-radius:21px;
+      font-size:2rem;line-height:1;background:linear-gradient(145deg,#00cffe,#146bfa 58%,#f232ef);
+      border:2px solid #a0f7ff;box-shadow:inset 0 1px 2px #ffffffe8,0 0 15px #00d7ff,0 0 16px #af39ff88;
+      text-shadow:0 1px 4px #0a1b50;
+    }
+    #galleryDialog.organiser-gallery .details-brand-icon{
+      background:linear-gradient(145deg,#02e2ba,#087ddc 70%,#0a367a);
+    }
+    #galleryDialog .details-aside .details-brand h2{
+      font-size:clamp(1.38rem,2.05vw,2rem);margin:0 0 5px;color:#fff;
+      text-shadow:0 0 16px #3c9dfb85;
+    }
+    #galleryDialog .details-aside p.details-tagline{
+      margin:0;color:#8deaff;font-size:clamp(.88rem,1.22vw,1.11rem);
+      font-style:italic;font-weight:600;line-height:1.35;
+    }
+    #galleryDialog .details-aside > p#galleryDescription{
+      color:#e4f1ff;font-size:.91rem;line-height:1.55;
+      margin:4px 0 1px;max-width:48ch;
+    }
+    #galleryDialog #galleryFeatures{gap:8px;margin:5px 0 4px}
+    #galleryDialog .details-feature{
+      min-height:60px;padding:8px 10px;
+      grid-template-columns:49px minmax(0,1fr);gap:13px;
+      border:1px solid #3593fe;border-radius:14px;
+      background:linear-gradient(90deg,#0a3284e6,#11256fdf);
+      box-shadow:inset 0 0 18px #1e78ff35,0 0 10px #1024a388;
+    }
+    #galleryDialog .details-feature:nth-child(4){background:linear-gradient(90deg,#0a36a0e6,#33209fdf)}
+    #galleryDialog .details-feature .feature-icon{
+      width:48px;height:48px;border-radius:13px;
+      font-size:1.5rem;border:1px solid #fff9;
+    }
+    #galleryDialog .details-feature strong{font-size:.87rem;margin-bottom:2px}
+    #galleryDialog .details-feature small{font-size:.73rem;color:#b9d9fc}
+    #galleryDialog .details-preview{
+      flex:0 0 auto;min-height:155px;position:relative;
+      display:flex;align-items:flex-end;justify-content:center;
+      margin:0 0 2px;pointer-events:none;
+    }
+    #galleryDialog .preview-laptop{
+      position:relative;width:78%;max-width:390px;margin-right:11%;
+      margin-bottom:15px;filter:drop-shadow(0 0 12px #058cfb87);
+    }
+    #galleryDialog .preview-laptop-screen{
+      padding:7px;border:5px solid #102c54;border-radius:11px 11px 4px 4px;
+      background:#031128;box-shadow:inset 0 0 0 1px #66d5ff,0 0 11px #55caff;
+    }
+    #galleryDialog .preview-laptop-screen img{
+      display:block;width:100%;aspect-ratio:16 / 9;
+      object-fit:contain;background:#eaf3fc;border-radius:2px;
+    }
+    #galleryDialog .preview-laptop-base{
+      position:absolute;bottom:-11px;left:-6%;width:112%;height:11px;
+      background:linear-gradient(#cee0f5,#415572);
+      border-radius:1px 1px 55% 55%;border:1px solid #6d98c6;
+      box-shadow:0 5px 8px #0008;
+    }
+    #galleryDialog .preview-companion{
+      position:absolute;bottom:12px;right:3%;width:22%;max-width:94px;
+      padding:5px 4px 8px;aspect-ratio:9/15;border-radius:12px;
+      border:4px solid #0b294c;background:#051936;
+      box-shadow:inset 0 0 0 1px #6de8ff,0 0 13px #0aa9ff99;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #galleryDialog .preview-companion img{
+      width:100%;height:100%;object-fit:contain;
+      background:#e9f4fd;border-radius:5px;
+    }
+    #galleryDialog.organiser-gallery .preview-companion{
+      aspect-ratio:3/4;width:26%;max-width:110px;border-radius:9px;
+    }
+    #galleryDialog #galleryAction{margin-top:auto;padding-top:9px}
+    #galleryDialog .dialog-action,#galleryDialog .dialog-soon{
+      min-height:60px;border-radius:28px;
+      font-size:1rem;font-weight:850;gap:12px;
+      box-shadow:inset 0 1px 1px #efffff99,0 0 12px #0acbff99,0 0 20px #0b79fd80;
+    }
+    #galleryDialog .dialog-action{background:linear-gradient(180deg,#06e0ff 0%,#0786f6 65%,#095dec 100%);border:2px solid #7affff}
+    #galleryDialog .dialog-action::before{content:"▶";font-size:1.25rem;color:#fff}
+    #galleryDialog .dialog-soon{border:2px solid #4e96e4;background:linear-gradient(180deg,#135fa3,#082e67);color:#cdeaff;box-shadow:inset 0 1px 1px #82cafa44,0 0 8px #218fea60}
+    #galleryDialog .dialog-soon::before{content:"◷";font-size:1.25rem}
+    @media(max-width:900px){
+      #galleryDialog .details-body{grid-template-columns:1fr;gap:15px}
+      #galleryDialog .details-aside{min-height:0}
+      #galleryDialog .details-preview{min-height:150px}
+    }
+    @media(max-width:600px){
+      #galleryDialog{padding:10px;max-width:calc(100vw - 12px)}
+      #galleryDialog .details-body{padding-top:36px}
+      #galleryDialog .details-aside{padding:14px 11px;border-radius:16px}
+      #galleryDialog .details-brand{grid-template-columns:55px minmax(0,1fr);gap:10px}
+      #galleryDialog .details-brand-icon{width:55px;height:55px;font-size:1.5rem;border-radius:15px}
+      #galleryDialog .details-aside .details-brand h2{font-size:1.22rem}
+      #galleryDialog .details-feature{gap:9px;grid-template-columns:43px minmax(0,1fr)}
+      #galleryDialog .details-feature .feature-icon{width:42px;height:42px}
+      #galleryDialog .gallery-thumbs{gap:4px}
+      #galleryDialog .gallery-thumb{font-size:.65rem;padding:4px}
+      #galleryDialog .preview-companion{right:0}
+    }
+
     /* Neon-blue information panel (style 6), with colorful luminous feature icons (style 4). */
     #galleryDialog .details-aside{
       position:relative;display:flex;flex-direction:column;gap:11px;min-width:0;
@@ -245,18 +397,18 @@
     </div></section>
   </main>
   <footer class="footer wrap"><span>© <span id="copyrightYear">2026</span> BroKaz App Hub</span><span>Made for useful, everyday tools</span></footer>
-  <dialog id="galleryDialog" aria-labelledby="galleryHeading"><button type="button" class="dialog-close" id="galleryClose" aria-label="Close gallery">×</button><div class="details-body"><div><div class="gallery-main"><button type="button" class="gallery-arrow prev" id="galleryPrev" aria-label="Previous picture">‹</button><img id="galleryImage" alt="" src="previews/recent-chat-manager/01_Main_Overview.png"><button type="button" class="gallery-arrow next" id="galleryNext" aria-label="Next picture">›</button></div><div class="gallery-caption" id="galleryCaption" aria-live="polite"></div><div class="gallery-thumbs" id="galleryThumbs"></div><p class="gallery-tip">Use the arrows or select a small picture to browse. Promotional illustrations are not exact app screenshots.</p></div><aside class="details-aside"><h2 id="galleryHeading">App gallery</h2><p id="galleryDescription"></p><div id="galleryFeatures"></div><div id="galleryAction"></div></aside></div></dialog>
+  <dialog id="galleryDialog" aria-labelledby="galleryHeading"><button type="button" class="dialog-close" id="galleryClose" aria-label="Close gallery">×</button><div class="details-body"><div><div class="gallery-main"><button type="button" class="gallery-arrow prev" id="galleryPrev" aria-label="Previous picture">‹</button><img id="galleryImage" alt="" src="previews/recent-chat-manager/01_Main_Overview.png"><button type="button" class="gallery-arrow next" id="galleryNext" aria-label="Next picture">›</button></div><div class="gallery-caption" id="galleryCaption" aria-live="polite"></div><div class="gallery-thumbs" id="galleryThumbs"></div><p class="gallery-tip">Use the arrows or select a small picture to browse. Promotional illustrations are not exact app screenshots.</p></div><aside class="details-aside"><div class="details-brand"><span class="details-brand-icon" id="galleryAppIcon" aria-hidden="true">✦</span><div class="details-brand-copy"><h2 id="galleryHeading">App gallery</h2><p id="galleryTagline" class="details-tagline"></p></div></div><p id="galleryDescription"></p><div id="galleryFeatures"></div><div class="details-preview" aria-hidden="true"><div class="preview-laptop"><div class="preview-laptop-screen"><img id="galleryPanelPreview" src="previews/my-creative-notes/promo-main.avif" alt=""></div><span class="preview-laptop-base"></span></div><div class="preview-companion"><img id="galleryPanelCompanion" src="previews/my-creative-notes/promo-how-to.avif" alt=""></div></div><div id="galleryAction"></div></aside></div></dialog>
   <dialog id="contactDialog" class="contact-form-dialog" aria-labelledby="contactDialogTitle"><button class="dialog-close" id="contactClose" type="button" aria-label="Close contact form">×</button><h2 id="contactDialogTitle">Send a message</h2><p>Contact BroKaz App Hub privately. Your message is delivered via FormSubmit, an external service.</p><form class="contact-form" action="https://formsubmit.co/brokazapphub@gmail.com" method="POST"><input type="hidden" name="_subject" id="contactSubject" value="Message from BroKaz App Hub"><input type="hidden" name="_next" value="https://brokaz-app-hub.github.io/thank-you.html"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><label for="visitorName">Your name *</label><input id="visitorName" name="name" autocomplete="name" maxlength="100" required><label for="visitorEmail">Your email *</label><input id="visitorEmail" type="email" name="email" autocomplete="email" maxlength="254" required><label for="visitorMessage">Your message *</label><textarea id="visitorMessage" name="message" maxlength="5000" required></textarea><button class="form-submit" type="submit">Send message →</button><p class="form-privacy">Please don't include passwords or sensitive information. <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">Form service privacy information</a>.</p></form></dialog>
   <script>
   (()=>{
     document.getElementById('copyrightYear').textContent=String(new Date().getFullYear());
     const galleries={
-      notes:{title:'My Creative Notes — Web Browser Edition',description:'Organise everyday notes, checklists and ideas with tabs and sections. Opens in a browser tab.',action:'<a class="dialog-action" href="https://brokaz-app-hub.github.io/creative-notes/" target="_blank" rel="noopener">Open My Creative Notes ↗</a>',features:[['Organise notes','Use tabs and sections for different projects.'],['Create checklists','Keep everyday tasks and ideas together.'],['Back up notes','Export your notes for safekeeping.']],images:[['previews/my-creative-notes/promo-main.avif','Overview','See the app layout and how your notes can be organised.'],['previews/my-creative-notes/promo-how-to.avif','How to use it','Create tabs, add notes and search.'],['previews/my-creative-notes/promo-customize.avif','Make it your own','Customise tabs, colours and icons.'],['previews/my-creative-notes/promo-backup.avif','Backup notes','Export and import notes when needed.']]},
+      notes:{title:'My Creative Notes — Web Browser Edition',description:'Organise everyday notes, checklists and ideas with tabs and sections. Opens in a browser tab.',action:'<a class="dialog-action" href="https://brokaz-app-hub.github.io/creative-notes/" target="_blank" rel="noopener">Open My Creative Notes ↗</a>',features:[['Organise notes','Use tabs and sections for different projects.'],['Create checklists','Keep everyday tasks and ideas together.'],['Back up notes','Export your notes for safekeeping.'],['Opens in your browser','Open the app without installing software.']],images:[['previews/my-creative-notes/promo-main.avif','Overview','See the app layout and how your notes can be organised.'],['previews/my-creative-notes/promo-how-to.avif','How to use it','Create tabs, add notes and search.'],['previews/my-creative-notes/promo-customize.avif','Make it your own','Customise tabs, colours and icons.'],['previews/my-creative-notes/promo-backup.avif','Backup notes','Export and import notes when needed.']]},
       organiser:{title:'ChatGPT Chat Organiser',description:'Search, select and delete eligible conversations in the ChatGPT Recent sidebar. Manages Recent chats only.',action:'<span class="dialog-soon">Chrome Web Store download coming soon</span>',features:[['Search Recent chats','Find eligible chats listed in the Recent sidebar.'],['Select multiple','Choose the chats you want to remove.'],['Delete with confirmation','Check your selection before deleting.'],['Protect current chat','Your active conversation is excluded from bulk deletion.']],images:[['previews/recent-chat-manager/01_Main_Overview.png','Main overview','A quick overview of the organiser.'],['previews/recent-chat-manager/02_Search_Instantly.png','Search instantly','Find Recent chats in seconds.'],['previews/recent-chat-manager/03_Select_Multiple.png','Select multiple','Choose eligible chats for deletion.'],['previews/recent-chat-manager/04_Delete_Confirmation.png','Delete with confirmation','Review and confirm the deletion.'],['previews/recent-chat-manager/05_Protect_Current_Chat.png','Protect current chat','Keep your active conversation excluded.']]}
     };
     const galleryDialog=document.getElementById('galleryDialog'),galleryImage=document.getElementById('galleryImage'),galleryCaption=document.getElementById('galleryCaption'),galleryThumbs=document.getElementById('galleryThumbs');let currentGallery='organiser',current=0;
     function show(n){const items=galleries[currentGallery].images;current=(n+items.length)%items.length;const item=items[current];galleryImage.src=item[0];galleryImage.alt=item[1];galleryCaption.replaceChildren();const title=document.createElement('b');title.textContent=item[1];const caption=document.createElement('small');caption.textContent=item[2];galleryCaption.append(title,caption);Array.from(galleryThumbs.children).forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));}
-    function openGallery(key){currentGallery=key;galleryDialog.classList.toggle('notes-gallery',key==='notes');const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();const featureIcons=key==='notes'?['📝','📅','💾']:['🔎','☑️','🗑️','🔒'];data.features.forEach(([heading,body],index)=>{const item=document.createElement('div');item.className='details-feature';const icon=document.createElement('span');icon.className='feature-icon';icon.textContent=featureIcons[index]||'✦';icon.setAttribute('aria-hidden','true');const words=document.createElement('div');words.className='feature-text';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;words.append(b,p);item.append(icon,words);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
+    function openGallery(key){currentGallery=key;galleryDialog.classList.toggle('notes-gallery',key==='notes');galleryDialog.classList.toggle('organiser-gallery',key==='organiser');const data=galleries[key];document.getElementById('galleryHeading').textContent=data.title;document.getElementById('galleryAppIcon').textContent=key==='notes'?'📝':'💬';document.getElementById('galleryTagline').textContent=key==='notes'?'Organise your notes, your way':'Keep your Recent chats organised';document.getElementById('galleryPanelPreview').src=data.images[0][0];document.getElementById('galleryPanelCompanion').src=data.images[1][0];document.getElementById('galleryDescription').textContent=data.description;document.getElementById('galleryFeatures').replaceChildren();const featureIcons=key==='notes'?['📝','☑️','💾','💻']:['🔎','☑️','🗑️','🔒'];data.features.forEach(([heading,body],index)=>{const item=document.createElement('div');item.className='details-feature';const icon=document.createElement('span');icon.className='feature-icon';icon.textContent=featureIcons[index]||'✦';icon.setAttribute('aria-hidden','true');const words=document.createElement('div');words.className='feature-text';const b=document.createElement('strong');b.textContent=heading;const p=document.createElement('small');p.textContent=body;words.append(b,p);item.append(icon,words);document.getElementById('galleryFeatures').append(item);});document.getElementById('galleryAction').innerHTML=data.action;galleryThumbs.replaceChildren();data.images.forEach(([path,label],i)=>{const btn=document.createElement('button');btn.type='button';btn.className='gallery-thumb';btn.setAttribute('aria-label','Show '+label);const img=document.createElement('img');img.src=path;img.alt='';const span=document.createElement('span');span.textContent=label;btn.append(img,span);btn.addEventListener('click',()=>show(i));galleryThumbs.append(btn);});show(0);galleryDialog.showModal();}
     document.querySelectorAll('[data-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(b.dataset.gallery)));document.getElementById('galleryClose').addEventListener('click',()=>galleryDialog.close());document.getElementById('galleryPrev').addEventListener('click',()=>show(current-1));document.getElementById('galleryNext').addEventListener('click',()=>show(current+1));galleryDialog.addEventListener('click',e=>{if(e.target===galleryDialog)galleryDialog.close();});document.addEventListener('keydown',e=>{if(!galleryDialog.open)return;if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);}if(e.key==='ArrowRight'){e.preventDefault();show(current+1);}});
     const contactDialog=document.getElementById('contactDialog');document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const idea=b.dataset.contact==='idea';document.getElementById('contactDialogTitle').textContent=idea?'Suggest an app idea':'Send a message';document.getElementById('contactSubject').value=idea?'New BroKaz app idea':'Message from BroKaz App Hub';contactDialog.showModal();document.getElementById('visitorName').focus();}));document.getElementById('contactClose').addEventListener('click',()=>contactDialog.close());contactDialog.addEventListener('click',e=>{if(e.target===contactDialog)contactDialog.close();});
   })();

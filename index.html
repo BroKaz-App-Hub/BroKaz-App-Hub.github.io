@@ -73,6 +73,34 @@
     @media(max-width:1150px){.apps-layout{grid-template-columns:180px minmax(0,1fr) minmax(0,1fr)}.view-all{display:none}.hero-copy{padding-left:25px}.contact-photo{width:49%}.hero-img{right:-100px;width:80%}}
     @media(max-width:900px){.top-cta{display:none}.hero{min-height:440px}.hero-img{right:-245px;top:38px;width:100%;opacity:.75}.hero-copy{max-width:470px}.apps-layout{grid-template-columns:repeat(2,minmax(0,1fr))}.future-apps{grid-column:1 / -1}.apps-intro{grid-column:1/-1}.apps-intro p{max-width:none}.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-hero{grid-template-columns:1fr 1fr}.contact-photo{width:65%;opacity:.3}.contact-actions{max-width:none}.details-body{grid-template-columns:1fr}}
     @media(max-width:650px){.future-apps{grid-template-columns:1fr}.header-inside{padding:10px 15px;gap:12px;flex-wrap:wrap}.brand{font-size:1.05rem}.brand img{width:36px;height:36px}.top-nav{margin-left:0;gap:17px;width:100%;justify-content:flex-start}.top-nav a{font-size:.8rem}.wrap{padding:0 16px}.hero{min-height:535px;align-items:flex-start}.hero-copy{padding:26px 0 20px;max-width:100%}.hero-img{top:270px;right:-20px;width:calc(100% + 80px);opacity:.95}.hero h1{font-size:clamp(3.1rem,13vw,4.2rem)}.hero-desc{font-size:.9rem;max-width:450px}.hero-points{display:none}.apps-layout{grid-template-columns:1fr}.app-card{height:250px}.apps-intro h2{font-size:1.45rem}.app-cover{height:119px}.benefits{gap:12px;padding:14px}.benefit .dot{width:32px;height:32px}.benefit strong{font-size:.7rem}.benefit small{font-size:.64rem}.contact-hero{grid-template-columns:1fr;min-height:460px;align-content:start;gap:15px}.contact-photo{bottom:0;top:auto;transform:none;height:200px;width:100%;right:0;object-fit:contain;opacity:.55}.contact-actions{margin-bottom:145px}.contact-copy{max-width:100%}.contact-copy h2{font-size:2.55rem}.gallery-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}.details-body{gap:10px}.footer{font-size:.7rem}}
+
+    /* Saved Contact layout: positions approved in the BroKaz visual editor.
+       Applied only on desktop; tablet and mobile keep their responsive flow. */
+    @media (min-width:901px){
+      .contact-hero.wrap{
+        display:block;width:100%;max-width:none;
+        height:clamp(380px,29vw,480px);min-height:380px;
+        position:relative;padding:0;isolation:isolate;
+      }
+      .contact-hero .contact-copy{
+        position:absolute;left:0.8%;top:18.8%;z-index:2;
+        width:29%;max-width:none;padding:0;
+      }
+      .contact-hero .contact-actions{
+        position:absolute;left:31.3%;top:21.7%;z-index:3;
+        width:28%;max-width:none;
+      }
+      .contact-hero .contact-photo{
+        position:absolute;left:60%;right:auto;top:18.1%;z-index:1;
+        width:40%;max-width:40%;height:auto;transform:none;
+        object-fit:contain;object-position:top left;opacity:1;
+      }
+      .contact-hero > div[aria-hidden="true"]{display:none}
+    }
+    @media (min-width:901px) and (max-width:1100px){
+      .contact-copy h2{font-size:clamp(1.9rem,3.2vw,2.7rem)}
+      .contact-action small{font-size:.66rem}
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.app-cover img{transition:none}}
   </style>
 </head>
